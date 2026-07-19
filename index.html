@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormFlowStudio | High-End Webdesign für KMU, Friseure & Cafés</title>
+    <style>
+        /* Farbpalette & Variablen */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #121212;
+            --creme-light: #f5f2eb;
+            --creme-muted: #d1cead;
+            --accent: #e6dfd3;
+            --font-sans: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Reset & Basis-Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--creme-light);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* Layout-Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(245, 242, 235, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--creme-muted);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--creme-muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 span {
+            color: var(--creme-muted);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(245, 242, 235, 0.7);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--creme-light);
+            color: var(--bg-dark);
+            border: 1px solid var(--creme-light);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--creme-light);
+        }
+
+        /* Sektionen Allgemein */
+        section {
+            padding: 8rem 0;
+            border-top: 1px solid rgba(245, 242, 235, 0.05);
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--creme-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* Expertise Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(245, 242, 235, 0.03);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 242, 235, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card p {
+            color: rgba(245, 242, 235, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .card-meta {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--creme-muted);
+        }
+
+        /* Showcase / Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        @media (max-width: 500px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
+
+        .portfolio-item {
+            group: relative;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 350px;
+            background-color: var(--bg-card);
+            border: 1px solid rgba(245, 242, 235, 0.05);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(245, 242, 235, 0.2);
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Platzhalter für echte Bilder – simuliert den edlen Look */
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, rgba(209,206,173,0.03) 0%, transparent 100%);
+        }
+
+        .portfolio-item h4 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-item p {
+            color: rgba(245, 242, 235, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Prozess / Ablauf */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .step-item { flex-direction: column; gap: 1rem; }
+        }
+
+        .step-num {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--creme-muted);
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .step-text h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .step-text p {
+            color: rgba(245, 242, 235, 0.6);
+            max-width: 600px;
+        }
+
+        /* Kontakt */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .contact-info p {
+            color: rgba(245, 242, 235, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--creme-muted);
+        }
+
+        input, textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(245, 242, 235, 0.2);
+            padding: 1rem 0;
+            color: var(--creme-light);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            border-bottom-color: var(--creme-light);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(245, 242, 235, 0.05);
+            font-size: 0.85rem;
+            color: rgba(245, 242, 235, 0.4);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav">
+            <a href="#" class="logo">FormFlow<span>Studio</span></a>
+            <ul class="nav-links">
+                <li><a href="#expertise">Leistungen</a></li>
+                <li><a href="#work">Projekte</a></li>
+                <li><a href="#process">Ablauf</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Digitale Maßarbeit für <span>KMUs, Cafés & Friseure.</span></h1>
+            <p>Ich entwickle minimalistische, pfeilschnelle Websites, die keine digitalen Visitenkarten sind, sondern aktiv neue Kunden und Buchungen für dein Business einbringen.</p>
+            <a href="#contact" class="btn btn-primary">Projekt anfragen</a>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise">
+        <div class="container">
+            <p class="section-title">Expertise</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Für Friseursalons</h3>
+                    <p>Nahtlose Integration von Online-Terminbuchungen, stilvolle Team-Präsentationen und lokale SEO-Optimierung, damit du bei Google ganz oben stehst, wenn jemand in deiner Stadt sucht.</p>
+                    <div class="card-meta">Fokus: Conversion & Buchung</div>
+                </div>
+                <div class="card">
+                    <h3>Für Cafés & Bistros</h3>
+                    <p>Digitale, leicht pflegbare Speisekarten, Integration von Google Maps, wunderschöne Visualisierungen deines Ambientes und Anbindung an deine Social-Media-Kanäle.</p>
+                    <div class="card-meta">Fokus: Branding & Experience</div>
+                </div>
+                <div class="card">
+                    <h3>Für KMUs & Handwerk</h3>
+                    <p>Klare Strukturierung deiner Dienstleistungen, optimierte Landingpages zur Mitarbeitergewinnung und rechtssichere (DSGVO) Technik mit extrem schnellen Ladezeiten.</p>
+                    <div class="card-meta">Fokus: Leads & Vertrauen</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="work">
+        <div class="container">
+            <p class="section-title">Ausgewählte Arbeiten</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">[ Café Noir – Minimalistisches Webdesign & Menü ]</div>
+                    <h4>Café Noir</h4>
+                    <p>Design & Entwicklung — 2026</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">[ Studio Schnittpunkt – Buchungssystem & Brand Design ]</div>
+                    <h4>Studio Schnittpunkt</h4>
+                    <p>Entwicklung & SEO — 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="container">
+            <p class="section-title">Der Ablauf</p>
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-num">01</div>
+                    <div class="step-text">
+                        <h4>Konzept & Strategie</h4>
+                        <p>Wir analysieren deine Zielgruppe. Ein Friseur braucht andere Features als ein Handwerksbetrieb. Wir legen fest, was die Website erreichen soll.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">02</div>
+                    <div class="step-text">
+                        <h4>Individuelles Design</h4>
+                        <p>Keine vorgefertigten 08/15-Templates. Deine Website bekommt ein maßgeschneidertes Design in Form und Flow, das exakt zu deiner Marke passt.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">03</div>
+                    <div class="step-text">
+                        <h4>Clean Coding & Launch</h4>
+                        <p>Sauberer Code sorgt für extrem schnelle Ladezeiten und ein perfektes Erlebnis auf Smartphones. Nach finaler Freigabe geht deine Seite live.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h3>Lass uns etwas Großartiges bauen.</h3>
+                <p>Egal ob du einen komplett neuen Auftritt brauchst oder deine alte Website endlich Kunden einbringen soll – schreib mir unverbindlich.</p>
+                <p style="color: var(--creme-muted);">hello@formflowstudio.de</p>
+            </div>
+            <div>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Branche (z.B. Café, Friseur, KMU)</label>
+                        <input type="text" id="business">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Projekt Details</label>
+                        <textarea id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FormFlowStudio. Alle Rechte vorbehalten. | Clean Code & Design by a Professional.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
