@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FormFlowStudio | Digitale Markenarchitektur & High-End Websysteme</title>
+    <title>FormFlowStudio | Digitale Markenarchitektur & Websysteme</title>
     
     <!-- Google Fonts: Cormorant Garamond (Serif) + Inter (Clean Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +61,7 @@
         }
 
         /* -----------------------------------------
-           1. Header & Navigation (Clean UI, ohne doppeltes Icon)
+           1. Header & Navigation (Ultra Minimalist)
         ----------------------------------------- */
         header {
             position: fixed;
@@ -73,7 +73,6 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-line);
-            transition: all 0.3s ease;
         }
 
         nav {
@@ -85,20 +84,10 @@
 
         .logo-brand {
             font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.6rem;
+            font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--text-dark);
-        }
-
-        .logo-brand span {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: var(--text-muted);
-            margin-left: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
         }
 
         .nav-menu {
@@ -121,12 +110,14 @@
             color: var(--text-dark);
         }
 
+        /* Hamburger Icon Rechtsbündig auf Mobile */
         .mobile-toggle {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
             padding: 0.5rem;
+            margin-left: auto;
         }
 
         @media (max-width: 868px) {
@@ -154,7 +145,7 @@
         }
 
         /* -----------------------------------------
-           Buttons & UI Elements
+           Buttons & Base Elements
         ----------------------------------------- */
         .btn {
             display: inline-flex;
@@ -206,7 +197,7 @@
         }
 
         /* -----------------------------------------
-           Hero Section (Entkoppelt)
+           Hero Section
         ----------------------------------------- */
         .hero {
             min-height: 100vh;
@@ -256,7 +247,7 @@
             flex-wrap: wrap;
         }
 
-        /* Hero Screendesign Mockup */
+        /* Hero Screendesign Card */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -298,27 +289,8 @@
             margin-bottom: 1rem;
         }
 
-        .preview-stats {
-            display: flex;
-            gap: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-line);
-            margin-top: 1.5rem;
-        }
-
-        .stat-item h5 {
-            font-size: 1.8rem;
-            font-family: var(--font-serif);
-        }
-
-        .stat-item p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
         /* -----------------------------------------
-           2. Showcase & Screendesign-Mockups
+           2. Showcase (Ausgewählte Arbeiten)
         ----------------------------------------- */
         .case-study-card {
             display: grid;
@@ -358,26 +330,6 @@
             font-weight: 300;
         }
 
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-line);
-        }
-
-        .metric-value {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            font-weight: 500;
-        }
-
-        .metric-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Realistisches Smartphone Mockup im CSS */
         .phone-mockup-frame {
             background-color: #0d0d0d;
             border-radius: 32px;
@@ -391,8 +343,8 @@
         .phone-screen {
             background-color: var(--bg-creme);
             border-radius: 22px;
-            padding: 2rem 1.25rem;
-            min-height: 420px;
+            padding: 2.5rem 1.25rem;
+            min-height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -401,99 +353,129 @@
         }
 
         /* -----------------------------------------
-           3. Measurable Outcomes (Ohne falsche Testimonials)
+           3. Potenziale & ROI (Glaubwürdige Sektion)
         ----------------------------------------- */
-        .outcome-grid {
+        .comparison-wrapper {
+            margin-top: 4rem;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
+            gap: 2rem;
         }
 
         @media (max-width: 992px) {
-            .outcome-grid { grid-template-columns: 1fr; }
+            .comparison-wrapper { grid-template-columns: 1fr; }
         }
 
-        .outcome-card {
+        .roi-card {
             padding: 3rem 2.5rem;
             background-color: var(--surface-creme);
             border: 1px solid var(--border-line);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: border-color 0.3s ease;
         }
 
-        .outcome-number {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            font-weight: 500;
-            line-height: 1;
+        .roi-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .roi-card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
-        }
-
-        .outcome-title {
-            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
         }
 
-        .outcome-desc {
+        .roi-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .roi-card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 300;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
-        /* About Section */
-        .about-layout {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .about-layout { grid-template-columns: 1fr; }
-        }
-
-        .about-image-placeholder {
-            aspect-ratio: 4/5;
-            background-color: var(--surface-creme);
-            border: 1px solid var(--border-line);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
+        /* -----------------------------------------
+           4. Studio & Founder-Bereich
+        ----------------------------------------- */
+        .about-wrapper {
+            max-width: 900px;
         }
 
         .about-text h3 {
             font-family: var(--font-serif);
-            font-size: 2.8rem;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 400;
             line-height: 1.15;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .about-text p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.75rem;
             font-weight: 300;
         }
 
+        .founder-seal {
+            margin-top: 4rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-line);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .founder-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: var(--surface-creme);
+            border: 1px solid var(--border-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            flex-shrink: 0;
+        }
+
+        .founder-info h5 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .founder-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0 !important;
+        }
+
         /* -----------------------------------------
-           4. Formular mit neutralen Branchen
+           5. Schlankes Kontaktformular
         ----------------------------------------- */
         .contact-section {
             background-color: var(--surface-creme);
         }
 
         .form-container {
-            max-width: 760px;
+            max-width: 680px;
             margin: 0 auto;
         }
 
@@ -514,7 +496,7 @@
         }
 
         .option-card {
-            padding: 1.25rem 1.5rem;
+            padding: 1.2rem 1.4rem;
             border: 1px solid var(--border-line);
             background-color: var(--bg-creme);
             cursor: pointer;
@@ -522,6 +504,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            font-size: 0.9rem;
         }
 
         .option-card:hover, .option-card.active {
@@ -629,11 +612,11 @@
 </head>
 <body>
 
-    <!-- 1. Clean Header (Doppeltes Icon behoben) -->
+    <!-- 1. Header Navigation (Clean Up: Nur Logo links, Burger rechts) -->
     <header>
         <div class="container nav">
             <a href="#" class="logo-brand">
-                FormFlowStudio <span>Digital Architecture</span>
+                FormFlowStudio
             </a>
 
             <button class="mobile-toggle" id="menuToggle" aria-label="Menü öffnen">
@@ -646,14 +629,14 @@
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#work">Showcase</a></li>
-                <li><a href="#outcomes">Performance</a></li>
+                <li><a href="#roi">Potenziale</a></li>
                 <li><a href="#about">Studio</a></li>
                 <li><a href="#contact" class="btn btn-outline" style="padding: 0.6rem 1.4rem;">Projekt anfragen</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Hero Section (Neutraler, breiterer Claim) -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-grid">
             <div>
@@ -666,7 +649,7 @@
                 </div>
             </div>
 
-            <!-- Screendesign Preview -->
+            <!-- Visual Showcase Card -->
             <div class="hero-visual">
                 <div class="mockup-card">
                     <div class="mockup-header">
@@ -676,51 +659,28 @@
                     </div>
                     <div class="mockup-body">
                         <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted);">Brand Identity & Interface</span>
-                        <div class="preview-title">AURA — Tailored Digital Experience</div>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 300;">Vollautomatisierte Buchungsprozesse gekoppelt mit kompromissloser visueller Ästhetik.</p>
-                        
-                        <div class="preview-stats">
-                            <div class="stat-item">
-                                <h5>+210%</h5>
-                                <p>Nutzer-Conversion</p>
-                            </div>
-                            <div class="stat-item">
-                                <h5>0.3s</h5>
-                                <p>Interaktionszeit</p>
-                            </div>
-                        </div>
+                        <div class="preview-title" style="margin-top: 0.5rem;">Tailored Digital Experience</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 300;">Nahtlose Buchungsprozesse gekoppelt mit kompromissloser visueller Ästhetik und minimaler Ladezeit.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. Showcase / Visual Evidence mit echten Screendesigns -->
+    <!-- 2. Showcase (Ausgewählte Arbeiten) -->
     <section id="work">
         <div class="container">
             <span class="section-tag">01 / Ausgewählte Arbeiten</span>
-            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 4rem;">Echte Ergebnisse. Keine Templates.</h2>
+            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 4rem;">Ergebnisse durch Maßarbeit.</h2>
 
             <!-- Case Study 1 -->
             <div class="case-study-card">
                 <div class="case-content">
                     <span class="case-tag">Brand Experience & Automatisierung</span>
-                    <h3>Atelier Vevét — High-End Service Concept</h3>
+                    <h3>Atelier Vevét — Service Concept</h3>
                     <p class="case-desc">Neupositionierung einer exklusiven Dienstleistungsmarke. Ein elegantes, reduziertes Interface mit nahtlos integrierter Termin- und Kapazitätsplanung sichert die Auslastung vollautomatisch.</p>
-                    
-                    <div class="metrics-grid">
-                        <div>
-                            <div class="metric-value">+180%</div>
-                            <div class="metric-label">Direkte Online-Conversions</div>
-                        </div>
-                        <div>
-                            <div class="metric-value">100%</div>
-                            <div class="metric-label">Automatisierter Buchungsflow</div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Screendesign Mockup Frame -->
                 <div class="phone-mockup-frame">
                     <div class="phone-screen">
                         <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6;">Atelier Vevét</div>
@@ -739,20 +699,8 @@
                     <span class="case-tag">Digitales Ökosystem & E-Commerce</span>
                     <h3>Nook Roastery — Direct-to-Consumer</h3>
                     <p class="case-desc">Erstellung einer schnellen Plattform mit integrierter Reservierungs-Engine, B2B-Kundenportal und optimierten Ladezeiten für maximale Google-Reichweite.</p>
-                    
-                    <div class="metrics-grid">
-                        <div>
-                            <div class="metric-value">+320%</div>
-                            <div class="metric-label">Steigerung der Tischreservierungen</div>
-                        </div>
-                        <div>
-                            <div class="metric-value">&lt; 0.4s</div>
-                            <div class="metric-label">High-Speed Ladezeit</div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Screendesign Mockup Frame -->
                 <div class="phone-mockup-frame">
                     <div class="phone-screen" style="background-color: #111; color: #f9f7f2;">
                         <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6;">Nook Culture</div>
@@ -767,105 +715,82 @@
         </div>
     </section>
 
-    <!-- 3. Measurable Outcomes (Statt ungeprüfter Testimonials) -->
-    <section id="outcomes">
+    <!-- 3. Potenziale & ROI (Entkoppelt & Realistisch) -->
+    <section id="roi">
         <div class="container">
-            <span class="section-tag">02 / Messbarer Mehrwert</span>
-            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; max-width: 700px; margin-bottom: 2rem;">Zahlen, die Maßstäbe setzen.</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 650px; font-weight: 300;">Wir messen den Erfolg unserer Systeme an handfesten Kennzahlen – von der reduzierten Ladezeit bis hin zur vollständigen Automatisierung manueller Prozesse.</p>
+            <span class="section-tag">02 / Potenziale & ROI</span>
+            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; max-width: 700px; margin-bottom: 1rem;">Mögliche Kennzahlen & Zielsetzungen.</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 650px; font-weight: 300;">Gezielte digitale Architektur adressiert die Schwachstellen klassischer Websites und verwandelt Besucher verlässlich in Kunden.</p>
 
-            <div class="outcome-grid">
-                <div class="outcome-card">
-                    <div class="outcome-number">+180%</div>
+            <div class="comparison-wrapper">
+                <div class="roi-card">
                     <div>
-                        <div class="outcome-title">Termin-Conversions</div>
-                        <p class="outcome-desc">Steigerung von direkten Anfragen und Buchungen durch Barrierefreie Nutzerführung.</p>
+                        <span class="roi-card-tag">Conversion Rate</span>
+                        <h3>Optimierte Buchungsquote</h3>
+                        <p>Nahtlose, barrierefreie Nutzerführung, die Website-Besucher ohne Hürden zu echten Buchungen und Anfragen konvertiert.</p>
                     </div>
                 </div>
 
-                <div class="outcome-card">
-                    <div class="outcome-number">100%</div>
+                <div class="roi-card">
                     <div>
-                        <div class="outcome-title">Automatisierte Verwaltung</div>
-                        <p class="outcome-desc">Kein manueller Aufwand mehr für Terminbestätigungen, Ausfälle oder Tischreservierungen.</p>
+                        <span class="roi-card-tag">Effizienz</span>
+                        <h3>Automatisierter Workflow</h3>
+                        <p>Digitale Termin- und Reservierungssysteme sparen tägliche Verwaltungszeit und reduzieren Ausfälle durch automatische Erinnerungen.</p>
                     </div>
                 </div>
 
-                <div class="outcome-card">
-                    <div class="outcome-number">&lt; 0.8s</div>
+                <div class="roi-card">
                     <div>
-                        <div class="outcome-title">Ladezeit-Garantie</div>
-                        <p class="outcome-desc">Maximale Performance für perfekte Sichtbarkeit bei Google und blitzschnelle Mobile-Nutzung.</p>
+                        <span class="roi-card-tag">Performance</span>
+                        <h3>High-Speed Performance</h3>
+                        <p>Ladezeiten unter 0,5 Sekunden garantieren minimale Absprungraten und beste Platzierungen bei Google.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Persönlichkeit (About Section) -->
+    <!-- 4. Studio & Founder-Bereich (Persönliches Siegel am Ende) -->
     <section id="about">
-        <div class="container about-layout">
-            <div class="about-image-placeholder">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin-bottom: 1rem;">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-dark);">Founder & Brand Architect</span>
-                <span style="font-size: 0.75rem;">FormFlowStudio</span>
-            </div>
-
+        <div class="container about-wrapper">
             <div class="about-text">
                 <span class="section-tag">03 / Studio-Philosophie</span>
                 <h3>„Persönliche Betreuung statt anonymer Großagentur.“</h3>
-                <p>Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf, sondern erstklassige Handwerkskunst aus einer Hand.</p>
+                <p>Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
                 <p>Ich verknüpfe tiefes Verständnis für ästhetisches Branding mit hochmoderner Software-Entwicklung. Das garantiert Ihnen direkte Wege, maximale Präzision und ein Endergebnis, das Ihre Marke uneinholbar an der Spitze positioniert.</p>
+
+                <!-- Founder-Siegel ans Ende gerückt -->
+                <div class="founder-seal">
+                    <div class="founder-avatar">FF</div>
+                    <div class="founder-info">
+                        <h5>Founder & Lead Architect</h5>
+                        <p>FormFlowStudio</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Formular (Neue neutralere Branchen) -->
+    <!-- 5. Schlankes Kontaktformular (Ohne Investment-Frage) -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div style="text-align: center; max-width: 600px; margin: 0 auto 4rem;">
-                <span class="section-tag">04 / Projektstart</span>
-                <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1rem;">Lassen Sie uns Ihr Projekt besprechen.</h2>
-                <p style="color: var(--text-muted); font-weight: 300;">Wählen Sie die Eckdaten Ihres Vorhabens für ein maßgeschneidertes Konzept.</p>
+                <span class="section-tag">04 / Erstkontakt</span>
+                <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1rem;">Projekt anfragen.</h2>
+                <p style="color: var(--text-muted); font-weight: 300;">Wählen Sie Ihre Branche und schildern Sie kurz Ihr Vorhaben für ein maßgeschneidertes Angebot.</p>
             </div>
 
             <div class="form-container">
                 <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.');">
                     <div class="form-step">
                         
-                        <!-- Budget Auswahl -->
-                        <div class="form-group">
-                            <label>Geplantes Investment</label>
-                            <div class="option-selector">
-                                <label class="option-card">
-                                    <span>3.000 € – 5.000 €</span>
-                                    <input type="radio" name="budget" value="3k-5k">
-                                </label>
-                                <label class="option-card active">
-                                    <span>5.000 € – 10.000 €</span>
-                                    <input type="radio" name="budget" value="5k-10k" checked>
-                                </label>
-                                <label class="option-card">
-                                    <span>10.000 € +</span>
-                                    <input type="radio" name="budget" value="10k+">
-                                </label>
-                                <label class="option-card">
-                                    <span>N/A (Beratung gewünscht)</span>
-                                    <input type="radio" name="budget" value="consulting">
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Entkoppelte Branchen-Auswahl -->
+                        <!-- Branchen-Auswahl -->
                         <div class="form-group">
                             <label>Branchenfeld</label>
                             <div class="option-selector">
-                                <label class="option-card">
+                                <label class="option-card active">
                                     <span>Dienstleistung & Beratung</span>
-                                    <input type="radio" name="branch" value="services">
+                                    <input type="radio" name="branch" value="services" checked>
                                 </label>
                                 <label class="option-card">
                                     <span>Erlebnis & Gastlichkeit</span>
@@ -882,23 +807,25 @@
                             </div>
                         </div>
 
-                        <!-- Kontaktdaten -->
+                        <!-- Name & Unternehmen -->
                         <div class="form-group">
                             <label for="userName">Name & Unternehmen</label>
                             <input type="text" id="userName" class="input-field" placeholder="z. B. Elena Becker, Becker & Co." required>
                         </div>
 
+                        <!-- E-Mail-Adresse -->
                         <div class="form-group">
                             <label for="userEmail">E-Mail-Adresse</label>
                             <input type="email" id="userEmail" class="input-field" placeholder="elena@becker-studio.de" required>
                         </div>
 
+                        <!-- Details -->
                         <div class="form-group">
                             <label for="userMessage">Details zum Vorhaben</label>
-                            <textarea id="userMessage" class="input-field" rows="3" placeholder="Beschreiben Sie kurz Ihre aktuellen Herausforderungen oder Zieldaten..." required></textarea>
+                            <textarea id="userMessage" class="input-field" rows="3" placeholder="Beschreiben Sie kurz Ihre aktuellen Herausforderungen oder Wünsche..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Unverbindliche Anfrage absenden</button>
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Erstgespräch anfordern</button>
 
                     </div>
                 </form>
@@ -921,7 +848,7 @@
                     <h6>Navigation</h6>
                     <ul>
                         <li><a href="#work">Showcase</a></li>
-                        <li><a href="#outcomes">Performance</a></li>
+                        <li><a href="#roi">Potenziale</a></li>
                         <li><a href="#about">Studio</a></li>
                         <li><a href="#contact">Kontakt</a></li>
                     </ul>
@@ -945,7 +872,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript für Mobile Menü & Formular-Interaktion -->
+    <!-- JavaScript für Mobile Menü & Formular-Kacheln -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
