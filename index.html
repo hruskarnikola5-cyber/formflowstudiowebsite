@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FormFlowStudio | Zeitloses Webdesign & Digitale Architektur</title>
+    <title>FormFlowStudio | Digitale Markenarchitektur & High-End Websysteme</title>
     
-    <!-- Google Fonts: Edle Serif (Cormorant) + Clean Sans (Inter) -->
+    <!-- Google Fonts: Cormorant Garamond (Elegante Serif) + Inter (Clean Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-creme: #f7f4eb;       /* Warmer, edler Cremeton als Hauptfarbe */
-            --text-dark: #0f0f0f;      /* Tiefschwarz für Typografie */
-            --text-muted: #5e5a52;     /* Abgemildertes Dunkelgrau für Nebentexte */
-            --border-line: rgba(15, 15, 15, 0.09); /* Hauchdünne, edle Trennlinien */
+            --bg-creme: #f9f7f2;
+            --surface-creme: #f2ede4;
+            --text-dark: #121212;
+            --text-muted: #666259;
+            --border-line: rgba(18, 18, 18, 0.08);
+            --border-hover: rgba(18, 18, 18, 0.25);
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Inter', sans-serif;
-            --ease: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* Base Resets */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -37,438 +41,1023 @@
             color: var(--text-dark);
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             padding: 0 2.5rem;
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
+            .container { padding: 0 1.25rem; }
         }
 
-        /* Minimalist Navigation */
+        /* -----------------------------------------
+           1. Header & Navigation (Fixed, Clean, Mobile Friendly)
+        ----------------------------------------- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(247, 244, 235, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(249, 247, 242, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-line);
+            transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 85px;
         }
 
-        .logo {
-            font-family: var(--font-serif);
-            font-weight: 500;
-            font-size: 1.5rem;
-            letter-spacing: 0.02em;
-        }
-
-        .logo span {
-            font-style: italic;
-            font-weight: 400;
-            color: var(--text-muted);
-        }
-
-        .nav-links {
+        .logo-brand {
             display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-dark);
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
             gap: 2.5rem;
             list-style: none;
         }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* Konsequenter Minimalismus mobil */
-        }
-
-        .nav-links a {
+        .nav-menu a {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             color: var(--text-muted);
-            text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s var(--ease);
         }
 
-        .nav-links a:hover {
+        .nav-menu a:hover {
             color: var(--text-dark);
         }
 
-        /* Hero Section - Zeitlos & Aufgeräumt */
-        .hero {
-            min-height: 95vh;
-            display: flex;
-            align-items: center;
-            padding-top: 90px;
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
-        .hero-wrapper {
-            max-width: 900px;
+        @media (max-width: 868px) {
+            .nav-menu {
+                position: fixed;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-creme);
+                flex-direction: column;
+                padding: 2.5rem 0;
+                gap: 2rem;
+                border-bottom: 1px solid var(--border-line);
+                transform: translateY(-150%);
+                transition: transform 0.4s var(--ease);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
         }
 
-        .hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5.5vw, 4.8rem);
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero h1 em {
-            font-family: var(--font-serif);
-            font-style: italic;
-        }
-
-        .hero p {
-            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-            line-height: 1.65;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            max-width: 620px;
-            font-weight: 300;
-        }
-
-        /* Eleganter Classic Button */
+        /* -----------------------------------------
+           Buttons & UI Elements
+        ----------------------------------------- */
         .btn {
-            display: inline-block;
-            padding: 1.1rem 2.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.1rem 2.4rem;
             background-color: var(--text-dark);
             color: var(--bg-creme);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
+            font-weight: 500;
             border: 1px solid var(--text-dark);
             cursor: pointer;
             transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
         }
 
         .btn:hover {
             background-color: transparent;
             color: var(--text-dark);
+            transform: translateY(-2px);
         }
 
-        /* Strukturierte Sektionen */
-        section {
-            padding: 8rem 0;
-            border-top: 1px solid var(--border-line);
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border-color: var(--border-hover);
         }
 
-        .section-meta {
+        .btn-outline:hover {
+            background-color: var(--text-dark);
+            color: var(--bg-creme);
+            border-color: var(--text-dark);
+        }
+
+        .section-tag {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: var(--text-muted);
-            margin-bottom: 3.5rem;
+            margin-bottom: 1.5rem;
             display: block;
-        }
-
-        /* Expertise in puristischer Listenform statt Boxen */
-        .list-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .list-item {
-            display: grid;
-            grid-template-columns: 0.6fr 1.4fr;
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--border-line);
-            align-items: baseline;
-        }
-
-        @media (max-width: 768px) {
-            .list-item { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
-        }
-
-        .list-item h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            font-weight: 400;
-        }
-
-        .list-item-content p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            max-width: 680px;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .list-item-content .focus-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-dark);
             font-weight: 500;
         }
 
-        /* Studio Philosophie (Das Werteversprechen) */
-        .philosophy-layout {
+        section {
+            padding: 9rem 0;
+            border-top: 1px solid var(--border-line);
+        }
+
+        /* -----------------------------------------
+           Hero Section
+        ----------------------------------------- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 6rem;
+            position: relative;
+        }
+
+        .hero-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            max-width: 800px;
-        }
-
-        .philosophy-layout h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-        }
-
-        .philosophy-layout p {
-            font-size: 1.1rem;
-            line-height: 1.75;
-            color: var(--text-muted);
-            font-weight: 300;
-        }
-
-        /* Zeitloser Ablauf (Horizontal auf Desktop, Vertikal auf Mobile) */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 4rem;
+            align-items: center;
         }
 
         @media (max-width: 992px) {
-            .process-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
 
-        .process-node h4 {
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Visual Showcase Mockup im Hero */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mockup-card {
+            width: 100%;
+            background-color: var(--surface-creme);
+            border: 1px solid var(--border-hover);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+            transition: transform 0.5s var(--ease);
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1.25rem;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(18, 18, 18, 0.2);
+        }
+
+        .mockup-body {
+            background-color: #ffffff;
+            border-radius: 4px;
+            padding: 2rem;
+            border: 1px solid var(--border-line);
+        }
+
+        .mockup-preview-salon {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .preview-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .preview-stats {
+            display: flex;
+            gap: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-line);
+        }
+
+        .stat-item h5 {
+            font-size: 1.5rem;
+            font-family: var(--font-serif);
+        }
+
+        .stat-item p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* -----------------------------------------
+           2. Showcase & Case Studies (Visual Evidence)
+        ----------------------------------------- */
+        .case-study-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+            background-color: var(--surface-creme);
+            padding: 3.5rem;
+            border: 1px solid var(--border-line);
+        }
+
+        @media (max-width: 992px) {
+            .case-study-card { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+        }
+
+        .case-content h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .case-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .case-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-line);
+        }
+
+        .metric-value {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 500;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .case-preview-frame {
+            background-color: #111;
+            color: #fff;
+            border-radius: 6px;
+            padding: 2.5rem;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* -----------------------------------------
+           3. Positionierung & ROI-Fokus
+        ----------------------------------------- */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 992px) {
+            .value-grid { grid-template-columns: 1fr; }
+        }
+
+        .value-card {
+            padding: 2.5rem;
+            background-color: var(--surface-creme);
+            border: 1px solid var(--border-line);
+            transition: border-color 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .value-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* -----------------------------------------
+           4. Trust, Testimonials & Personality
+        ----------------------------------------- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-grid { grid-template-columns: 1fr; }
+        }
+
+        .testimonial-card {
+            padding: 3rem;
+            border: 1px solid var(--border-line);
+            background-color: var(--bg-creme);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-quote {
             font-family: var(--font-serif);
             font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .author-info {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .process-node h4 span {
-            font-size: 0.9rem;
-            font-family: var(--font-sans);
-            color: var(--text-muted);
-            font-weight: 300;
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--surface-creme);
+            border: 1px solid var(--border-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-weight: 600;
         }
 
-        .process-node p {
-            color: var(--text-muted);
+        .author-details h5 {
             font-size: 0.95rem;
-            line-height: 1.65;
-            font-weight: 300;
+            font-weight: 600;
         }
 
-        /* Edles, aufgeräumtes Kontaktformular */
-        .contact-layout {
+        .author-details span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* About Section (Persönlichkeit) */
+        .about-layout {
             display: grid;
             grid-template-columns: 0.8fr 1.2fr;
             gap: 4rem;
+            align-items: center;
         }
 
-        @media (max-width: 992px) {
-            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+        @media (max-width: 768px) {
+            .about-layout { grid-template-columns: 1fr; }
         }
 
-        .contact-heading h3 {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            font-weight: 400;
-            line-height: 1.1;
-        }
-
-        .contact-heading p {
-            margin-top: 1.5rem;
+        .about-image-placeholder {
+            aspect-ratio: 4/5;
+            background-color: var(--surface-creme);
+            border: 1px solid var(--border-line);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
             color: var(--text-muted);
-            font-size: 1rem;
         }
 
-        .form-group {
-            margin-bottom: 2.5rem;
+        .about-text h3 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
         }
 
-        .form-group input, .form-group textarea {
+        /* -----------------------------------------
+           5. Multi-Step / High-Ticket Formular
+        ----------------------------------------- */
+        .contact-section {
+            background-color: var(--surface-creme);
+        }
+
+        .form-container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .form-step {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .option-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 576px) {
+            .option-selector { grid-template-columns: 1fr; }
+        }
+
+        .option-card {
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-line);
+            background-color: var(--bg-creme);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .option-card:hover, .option-card.active {
+            border-color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        .option-card input {
+            display: none;
+        }
+
+        .input-field {
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(15, 15, 15, 0.15);
-            padding: 0.8rem 0;
-            color: var(--text-dark);
+            border-bottom: 1px solid var(--border-hover);
+            padding: 1rem 0;
             font-family: var(--font-sans);
             font-size: 1rem;
+            color: var(--text-dark);
             outline: none;
             transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .input-field:focus {
             border-bottom-color: var(--text-dark);
         }
 
-        /* Footer */
-        footer {
-            padding: 4rem 0;
-            border-top: 1px solid var(--border-line);
+        .form-group label {
             font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dark);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* -----------------------------------------
+           6. Footer & Legal
+        ----------------------------------------- */
+        footer {
+            padding: 5rem 0 3rem;
+            border-top: 1px solid var(--border-line);
+            background-color: var(--bg-creme);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
 
         @media (max-width: 768px) {
-            footer { flex-direction: column; gap: 1rem; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            max-width: 320px;
+            font-weight: 300;
+        }
+
+        .footer-links h6 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-line);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        @media (max-width: 576px) {
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- 1. Header Navigation -->
     <header>
         <div class="container nav">
-            <a href="#" class="logo">FormFlow<span>Studio</span></a>
-            <ul class="nav-links">
-                <li><a href="#specialization">Fokus</a></li>
-                <li><a href="#philosophy">Philosophie</a></li>
-                <li><a href="#process">Architektur</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+            <a href="#" class="logo-brand">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="4" fill="#121212"/>
+                    <path d="M12 14H28M12 20H24M12 26H20" stroke="#F9F7F2" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                FormFlowStudio
+            </a>
+
+            <button class="mobile-toggle" id="menuToggle" aria-label="Menü öffnen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#work">Showcase</a></li>
+                <li><a href="#roi">Strategie & ROI</a></li>
+                <li><a href="#about">Über das Studio</a></li>
+                <li><a href="#testimonials">Referenzen</a></li>
+                <li><a href="#contact" class="btn btn-outline" style="padding: 0.6rem 1.4rem;">Projekt anfragen</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-wrapper">
-            <h1>Digitale Maßarbeit für Marken mit <em>Charakter.</em></h1>
-            <p>FormFlowStudio konzipiert und entwickelt puristische, extrem schnelle Websysteme für wachsende KMUs, progressive Friseursalons und inhabergeführte Cafés.</p>
-            <a href="#contact" class="btn">Projekt anfragen</a>
-        </div>
-    </section>
-
-    <!-- Specialization (Expertise) Section in Listenform -->
-    <section id="specialization">
-        <div class="container">
-            <span class="section-meta">01 / Spezialisierung</span>
-            <div class="list-container">
-                
-                <div class="list-item">
-                    <h3>Friseure</h3>
-                    <div class="list-item-content">
-                        <p>Einladende Ästhetik trifft auf nahtlose Funktion. Wir integrieren maßgeschneiderte Premium-Terminsysteme, die Hürden abbauen und die Auslastung deines Salons maximieren.</p>
-                        <span class="focus-tag">Fokus: Conversion & Brand Experience</span>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <h3>Cafés & Bistros</h3>
-                    <div class="list-item-content">
-                        <p>Visuelle Klarheit, die das Ambiente deines Raums einfängt. Mobil optimierte, leicht pflegbare Speisekarten und lokale SEO-Architektur für spürbar mehr Frequenz vor Ort.</p>
-                        <span class="focus-tag">Fokus: Ästhetik & Lokale Reichweite</span>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <h3>KMUs & Handwerk</h3>
-                    <p class="list-item-content">
-                        <p>Strukturierte Informationsarchitektur zur Gewinnung von Premium-Kunden und qualifizierten Fachkräften. Technisch kompromisslos, rechtssicher und zukunftssicher gebaut.</p>
-                        <span class="focus-tag">Fokus: Lead-Generierung & Vertrauen</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section (Strategische Profilierung ohne Portfolio) -->
-    <section id="philosophy" style="background-color: rgba(15, 15, 15, 0.02);">
-        <div class="container philosophy-layout">
-            <span class="section-meta">02 / Philosophie</span>
-            <h2>„Klassische Moderne bedeutet, das Unwesentliche wegzulassen, um das Wesentliche erstrahlen zu lassen.“</h2>
-            <p>Eine High-End-Website besticht nicht durch laute Effekte, sondern durch makellose Typografie, großzügigen Raum und absolute Performance. Jedes System wird von Grund auf sauber handcodiert – frei von überflüssigen Baukasten-Systemen. Das Resultat ist Ladezeit im Millisekundenbereich und eine User Experience, die Vertrauen schafft.</p>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process">
-        <div class="container">
-            <span class="section-meta">03 / Digitale Architektur</span>
-            <div class="process-grid">
-                <div class="process-node">
-                    <h4><span>I /</span> Analyse</h4>
-                    <p>Wir strukturieren die Ziele deines Unternehmens und definieren die exakte Nutzerführung für deine Zielgruppe.</p>
-                </div>
-                <div class="process-node">
-                    <h4><span>II /</span> Design</h4>
-                    <p>Ein maßgeschneidertes, zeitloses Design-Konzept, das die Einzigartigkeit deines Betriebs visuell transportiert.</p>
-                </div>
-                <div class="process-node">
-                    <h4><span>III /</span> Code</h4>
-                    <p>Reine Programmierung ohne Altlasten. Maßgeschneidert, extrem schnell bei Google und zukunftssicher aufgestellt.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container contact-layout">
-            <div class="contact-heading">
-                <h3>Lass uns sprechen.</h3>
-                <p>Unverbindlich und direkt. Erzähl mir von deinem Projekt.</p>
-            </div>
+        <div class="container hero-grid">
             <div>
-                <form action="#" method="POST" onsubmit="event.preventDefault();">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required autocomplete="off">
+                <span class="section-tag">Digitale Markenarchitektur</span>
+                <h1>Mehr Umsatz & Ansehen für <em>außergewöhnliche</em> Orte.</h1>
+                <p class="hero-sub">Wir entwickeln digitale Maßanfertigungen für anspruchsvolle Salons, Cafés und KMUs. Keine generischen Vorlagen, sondern strategische Websysteme, die Auslastung und Markenwert messbar steigern.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn">Kostenfreies Erstgespräch</a>
+                    <a href="#work" class="btn btn-outline">Showcase ansehen</a>
+                </div>
+            </div>
+
+            <!-- Interaktives UI-Mockup (Show, don't tell) -->
+            <div class="hero-visual">
+                <div class="mockup-card">
+                    <div class="mockup-header">
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="branche">Unternehmen / Branche</label>
-                        <input type="text" id="branche" required autocomplete="off">
+                    <div class="mockup-body">
+                        <div class="mockup-preview-salon">
+                            <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted);">Maison & Co. — Boutique Salon</span>
+                            <div class="preview-title">AURA — Hair & Aesthetic Experience</div>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 300;">Erleben Sie erstklassige Handwerkskunst in entspannter Atmosphäre. Buchen Sie Ihren Termin direkt online.</p>
+                            
+                            <div class="preview-stats">
+                                <div class="stat-item">
+                                    <h5>+210%</h5>
+                                    <p>Online-Buchungen</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h5>-80%</h5>
+                                    <p>Telefon-Ausfälle</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">E-Mail-Adresse</label>
-                        <input type="email" id="email" required autocomplete="off">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Showcase / Visual Evidence (Case Studies) -->
+    <section id="work">
+        <div class="container">
+            <span class="section-tag">01 / Ausgewählte Arbeiten</span>
+            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 4rem;">Ergebnisse, die für sich sprechen.</h2>
+
+            <!-- Case Study 1 -->
+            <div class="case-study-card">
+                <div class="case-content">
+                    <span class="case-tag">Salon & Spa / Rebranding + System</span>
+                    <h3>Atelier Vevét — Premium Hair Studio</h3>
+                    <p class="case-desc">Neupositionierung eines exklusiven Salons. Durch ein elegantes Redesign mit nahtlos integrierter Terminbuchung und automatischer Bestätigung per SMS wurde die Auslastung auf Monate im Voraus gesichert.</p>
+                    
+                    <div class="metrics-grid">
+                        <div>
+                            <div class="metric-value">+180%</div>
+                            <div class="metric-label">Direkte Online-Buchungen</div>
+                        </div>
+                        <div>
+                            <div class="metric-value">4.200 €</div>
+                            <div class="metric-label">Monatliche Zeitersparnis (Orga)</div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Details zum Vorhaben</label>
-                        <textarea id="message" rows="4" required autocomplete="off"></textarea>
+                </div>
+                <div class="case-preview-frame">
+                    <div class="preview-overlay"></div>
+                    <span style="font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.6;">CASE STUDY // 2026</span>
+                    <div style="margin: 3rem 0;">
+                        <h4 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 400;">„Ein Design, das unsere Stammkunden begeistert und Neukunden sofort überzeugt.“</h4>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%;">Anfrage senden</button>
+                    <span style="font-size: 0.85rem; font-weight: 500;">www.atelier-vevet.de</span>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="case-study-card">
+                <div class="case-content">
+                    <span class="case-tag">Gastronomie / Digitales Menü & Events</span>
+                    <h3>Café & Roastery Café Nook</h3>
+                    <p class="case-desc">Entwicklung einer stimmungsvollen, pfeilschnellen Webpräsenz mit digitaler Speisekarte, integriertem B2B-Kaffeeabo-Shop und Event-Reservierungssystem.</p>
+                    
+                    <div class="metrics-grid">
+                        <div>
+                            <div class="metric-value">+320%</div>
+                            <div class="metric-label">Mehr Reservierungen für Events</div>
+                        </div>
+                        <div>
+                            <div class="metric-value">0.4s</div>
+                            <div class="metric-label">Ladezeit (Perfekte Google-SEO)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-preview-frame" style="background-color: #1a1917;">
+                    <div class="preview-overlay"></div>
+                    <span style="font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.6;">CASE STUDY // 2026</span>
+                    <div style="margin: 3rem 0;">
+                        <h4 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 400;">„Die Website spiegelt die Atmosphäre unseres Cafés 1:1 digital wider.“</h4>
+                    </div>
+                    <span style="font-size: 0.85rem; font-weight: 500;">www.nook-roastery.de</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ROI & Positionierung -->
+    <section id="roi">
+        <div class="container">
+            <span class="section-tag">02 / Die Investment-Strategie</span>
+            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; max-width: 700px; margin-bottom: 2rem;">Eine gute Website kostet kein Geld. Sie verdient Geld.</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 650px; font-weight: 300;">Wer auf High-End-Niveau agiert, braucht keine Standard-Visitenkarte. Wir bauen digitale Werkzeuge, die organisatorische Abläufe automatisieren und Kunden mit hoher Zahlungsbereitschaft anziehen.</p>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <h4>Neukunden auf Autopilot</h4>
+                    <p>Durch durchdachte Conversion-Pfade und fehlerfreie mobile Nutzerführung verwandeln sich zufällige Besucher in treue Stammkunden.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Prozess-Automatisierung</h4>
+                    <p>Integrierte Buchungs- und Reservierungssysteme nehmen Ihrem Team täglich Stunden an Telefon- und Verwaltungsarbeit ab.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Premium-Wahrnehmung</h4>
+                    <p>Ein ästhetischer, kompromissloser Online-Auftritt rechtfertigt höhere Preise und hebt Sie uneinholbar von regionalen Mitbewerbern ab.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Persönlichkeit (About Section) -->
+    <section id="about">
+        <div class="container about-layout">
+            <div class="about-image-placeholder">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin-bottom: 1rem;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-dark);">Porträt / Founder</span>
+                <span style="font-size: 0.75rem;">FormFlowStudio</span>
+            </div>
+
+            <div class="about-text">
+                <span class="section-tag">03 / Über das Studio</span>
+                <h3>„Persönliche Betreuung statt anonymer Großagentur.“</h3>
+                <p>Hinter FormFlowStudio steht kein riesiger Agentur-Wasserkopf mit wechselnden Ansprechpartnern, sondern klare, meisterhafte Handwerkskunst aus einer Hand.</p>
+                <p>Ich verknüpfe tiefes Verständnis für ästhetisches Branding mit hochmoderner Software-Entwicklung. Das garantiert Ihnen direkte Wege, maximale Präzision und ein Endergebnis, das exakt zu den Werten Ihres Unternehmens passt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Testimonials & Social Proof -->
+    <section id="testimonials">
+        <div class="container">
+            <span class="section-tag">04 / Kundenstimmen</span>
+            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 2rem;">Vertrauen durch Resultate.</h2>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Seit dem Relaunch durch FormFlowStudio kommen fast 80% unserer Buchungen vollautomatisch über die Website. Unser Telefon steht endlich still und wir können uns auf unsere Kunden konzentrieren.“</p>
+                    <div class="author-info">
+                        <div class="author-avatar">SL</div>
+                        <div class="author-details">
+                            <h5>Sophie Laurent</h5>
+                            <span>Inhaberin, Maison Laurent Hair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Die Investition hat sich nach weniger als vier Monaten komplett amortisiert. Die Ästhetik der Seite entspricht genau dem Vibe, den unsere Gäste in unserem Café schätzen.“</p>
+                    <div class="author-info">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-details">
+                            <h5>Marc Keller</h5>
+                            <span>Founder, Kaffeemanufaktur Keller</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Veredeltes Kontaktformular (Vorqualifizierung) -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 4rem;">
+                <span class="section-tag">05 / Projektstart</span>
+                <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1rem;">Lassen Sie uns etwas Erhabenes schaffen.</h2>
+                <p style="color: var(--text-muted); font-weight: 300;">Wählen Sie die Rahmenbedingungen Ihres Projekts für ein maßgeschneidertes Angebot.</p>
+            </div>
+
+            <div class="form-container">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.');">
+                    <div class="form-step">
+                        
+                        <!-- Budget Auswahl -->
+                        <div class="form-group">
+                            <label>Geplantes Budget-Investment</label>
+                            <div class="option-selector">
+                                <label class="option-card">
+                                    <span>3.000 € – 5.000 €</span>
+                                    <input type="radio" name="budget" value="3k-5k">
+                                </label>
+                                <label class="option-card active">
+                                    <span>5.000 € – 10.000 €</span>
+                                    <input type="radio" name="budget" value="5k-10k" checked>
+                                </label>
+                                <label class="option-card">
+                                    <span>10.000 € +</span>
+                                    <input type="radio" name="budget" value="10k+">
+                                </label>
+                                <label class="option-card">
+                                    <span>N/A (Beratung gewünscht)</span>
+                                    <input type="radio" name="budget" value="consulting">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Branche -->
+                        <div class="form-group">
+                            <label>Ihre Branche</label>
+                            <div class="option-selector">
+                                <label class="option-card">
+                                    <span>Friseur / Beauty Salon</span>
+                                    <input type="radio" name="branch" value="salon">
+                                </label>
+                                <label class="option-card">
+                                    <span>Café / Gastronomie</span>
+                                    <input type="radio" name="branch" value="gastro">
+                                </label>
+                                <label class="option-card">
+                                    <span>KMU / Mittelstand</span>
+                                    <input type="radio" name="branch" value="kmu">
+                                </label>
+                                <label class="option-card">
+                                    <span>Sonstiges</span>
+                                    <input type="radio" name="branch" value="other">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Kontaktdaten -->
+                        <div class="form-group">
+                            <label for="userName">Name & Unternehmen</label>
+                            <input type="text" id="userName" class="input-field" placeholder="z. B. Elena Becker, Atelier Becker" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userEmail">E-Mail-Adresse</label>
+                            <input type="email" id="userEmail" class="input-field" placeholder="elena@becker-studio.de" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userMessage">Details zum Vorhaben & Zielsetzung</label>
+                            <textarea id="userMessage" class="input-field" rows="3" placeholder="Beschreiben Sie kurz Ihre aktuellen Herausforderungen oder Wünsche..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Unverbindliche Anfrage absenden</button>
+
+                    </div>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 7. Footer & Legal -->
     <footer>
-        <p>&copy; 2026 FormFlowStudio. Alle Rechte vorbehalten.</p>
-        <p>Studio für zeitlose Web-Architektur</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo-brand">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="4" fill="#121212"/>
+                            <path d="M12 14H28M12 20H24M12 26H20" stroke="#F9F7F2" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                        FormFlowStudio
+                    </a>
+                    <p>Studio für digitale Markenarchitektur, High-Performance-Websites und nahtlose Prozess-Automatisierung.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h6>Navigation</h6>
+                    <ul>
+                        <li><a href="#work">Showcase</a></li>
+                        <li><a href="#roi">Strategie</a></li>
+                        <li><a href="#about">Über das Studio</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h6>Socials & Legal</h6>
+                    <ul>
+                        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="#impressum">Impressum</a></li>
+                        <li><a href="#datenschutz">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FormFlowStudio. Alle Rechte vorbehalten.</p>
+                <p>Designed & Handcoded with Precision</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- JavaScript für Mobile Navigation & Interaktive Buttons -->
+    <script>
+        // Mobile Navigation Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Interactive Option Selector styling in form
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const groupName = this.querySelector('input').name;
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+                    input.closest('.option-card').classList.remove('active');
+                });
+                this.classList.add('active');
+                this.querySelector('input').checked = true;
+            });
+        });
+    </script>
 
 </body>
 </html>
-
