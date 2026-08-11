@@ -7,18 +7,18 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ======================================================================
-           1. COLOR PALETTE UPDATE (PURE MONOCHROME)
+           COLOR SYSTEM & BASE STYLES (MONOCHROME BLACK & WHITE)
            ====================================================================== */
         :root {
-            --bg-main: #FFFFFF;             /* Reinweiß */
-            --surface-studio: #F5F5F7;      /* Neutrales Studio-Grau */
-            --text-primary: #0A0A0A;        /* Tiefschwarz */
-            --text-secondary: #666666;      /* Neutralgrau */
-            --border-neutral: #E5E5E5;      /* Hellgraue Trennlinien */
+            --bg-main: #FFFFFF;
+            --surface-studio: #F5F5F7;
+            --text-primary: #0A0A0A;
+            --text-secondary: #666666;
+            --border-neutral: #E5E5E5;
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Inter', sans-serif;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -56,19 +56,17 @@
             padding: 0 1.25rem;
         }
 
-        /* ======================================================================
-           2. HEADER & NAVIGATION BASE (MOBILE & BREAKPOINT-UNTOUCHED)
-           ====================================================================== */
+        /* Base Header (Mobile First) */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-neutral);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         nav {
@@ -80,7 +78,7 @@
 
         .logo-brand {
             font-family: var(--font-serif);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--text-primary);
@@ -129,28 +127,23 @@
             letter-spacing: 0.12em;
             color: var(--text-secondary);
             font-weight: 500;
-            transition: color 0.2s ease;
         }
 
-        .nav-menu a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Buttons & Base Components */
+        /* Buttons & Components */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 12px 24px;
-            background-color: var(--text-primary);
-            color: var(--bg-main);
+            background-color: #000000;
+            color: #FFFFFF;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-weight: 500;
+            font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+            transition: background-color 0.2s ease;
         }
 
         .btn:hover {
@@ -184,7 +177,7 @@
             border-top: 1px solid var(--border-neutral);
         }
 
-        /* Hero Section */
+        /* 1. Hero Section Base */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -225,31 +218,7 @@
             margin-top: 2rem;
         }
 
-        .case-study-card {
-            background-color: var(--surface-studio);
-            padding: 2rem;
-            border: 1px solid var(--border-neutral);
-            margin-bottom: 2rem;
-        }
-
-        .phone-mockup-frame {
-            background-color: #0A0A0A;
-            border-radius: 32px;
-            padding: 12px;
-            max-width: 300px;
-            margin: 2rem auto 0;
-        }
-
-        .phone-screen {
-            background-color: var(--bg-main);
-            border-radius: 22px;
-            padding: 2rem 1rem;
-            min-height: 360px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
+        /* 2. ROI Cards Base */
         .roi-card {
             padding: 2rem;
             background-color: var(--surface-studio);
@@ -257,56 +226,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* FAQ Accordion Styling Base */
-        .faq-accordion {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border-neutral);
-            padding: 1.5rem 0;
-            cursor: pointer;
-        }
-
-        .faq-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-question {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 500;
-        }
-
-        .faq-icon {
-            font-size: 1.5rem;
-            transition: transform 0.3s var(--ease);
-            font-weight: 300;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s var(--ease), padding-top 0.4s var(--ease);
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-top: 1rem;
-        }
-
-        /* Founder Seal Base */
+        /* 3. Studio Founder Seal */
         .founder-seal {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -330,7 +250,7 @@
             font-weight: 600;
         }
 
-        /* Form Base */
+        /* 4. Form Split Base */
         .option-selector {
             display: grid;
             grid-template-columns: 1fr;
@@ -412,24 +332,44 @@
         }
 
         /* ======================================================================
-           2. HEADER REDESIGN & TABLET/DESKTOP BREAKPOINT (>= 768px)
+           MEDIA-QUERY SCOPING: TABLET / DESKTOP (min-width: 768px)
            ====================================================================== */
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
 
-            /* Header Padding: 24px Top/Bottom, 48px Left/Right */
-            header .container.nav {
-                max-width: 100%;
-                padding: 24px 48px;
+            /* 1. Header Redesign & Glassmorphism */
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             }
 
             nav {
-                height: auto;
+                height: 85px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            /* Logo: Ganz linksbündig, 24px Serif */
+            .logo-brand {
+                font-family: var(--font-serif);
+                font-size: 24px;
+                font-weight: 500;
+                letter-spacing: -0.01em;
+                color: var(--text-primary);
+                line-height: 1;
             }
 
             .mobile-toggle { display: none !important; }
 
-            /* Desktop Nav Right-Block Container */
+            /* Nav-Menu Container rechtsbündig */
             .nav-menu {
                 position: static;
                 transform: none;
@@ -437,8 +377,9 @@
                 padding: 0;
                 background: transparent;
                 border: none;
-                gap: 0; /* Gesteuert über Margin-Right */
+                gap: 0;
                 width: auto;
+                align-items: center;
             }
 
             .nav-menu li {
@@ -446,33 +387,30 @@
                 align-items: center;
             }
 
-            /* Links 12px Uppercase, Letter-Spacing: 0.08em, Color #666666 */
+            /* Links: 12px Uppercase, #666666, Margin-Right: 28px */
             .nav-menu li:not(:last-child) a {
                 font-size: 12px;
                 text-transform: uppercase;
                 letter-spacing: 0.08em;
                 font-weight: 500;
-                color: var(--text-secondary);
-                margin-right: 32px;
+                color: #666666;
+                margin-right: 28px;
                 transition: color 0.2s ease;
             }
 
             .nav-menu li:not(:last-child) a:hover {
-                color: var(--text-primary);
+                color: #000000;
             }
 
-            /* Dedicated CTA Button Styling */
-            .nav-menu li:last-child {
-                margin-left: 32px; /* Margin-Left zum letzten Link */
-            }
-
+            /* CTA Button ("PROJEKT ANFRAGEN") */
             .nav-menu li:last-child a.btn-cta {
                 background-color: #000000;
                 color: #FFFFFF;
-                padding: 12px 24px;
-                font-size: 12px;
+                padding: 10px 20px;
+                font-size: 11px;
+                text-transform: uppercase;
                 letter-spacing: 0.08em;
-                font-weight: 500;
+                font-weight: 700;
                 border-radius: 0px;
                 border: none;
                 transition: background-color 0.2s ease;
@@ -485,10 +423,11 @@
 
             section { padding: 7rem 0; }
 
+            /* Hero Adjustments */
             .hero {
-                padding-top: 120px;
-                padding-bottom: 3rem;
-                min-height: 75vh;
+                padding-top: 140px;
+                padding-bottom: 4rem;
+                min-height: 80vh;
             }
 
             .hero-grid {
@@ -501,16 +440,7 @@
             .hero h1 { font-size: 3.8rem; }
             .mockup-card { margin-top: 0; }
 
-            .case-study-card {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-                align-items: center;
-                padding: 3.5rem;
-            }
-
-            .phone-mockup-frame { margin: 0 auto; }
-
+            /* 2. ROI 3-Spalten-Grid */
             .comparison-wrapper {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -523,6 +453,7 @@
                 padding: 2.5rem 2rem;
             }
 
+            /* 4. Split-Screen Kontakt */
             .option-selector {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -547,6 +478,7 @@
         }
 
         @media (min-width: 1024px) {
+            .hero { padding-top: 160px; }
             .hero h1 { font-size: 4.5rem; }
             .contact-split-grid { gap: 6rem; }
         }
@@ -568,20 +500,20 @@
             </button>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="arbeiten.html">Showcase</a></li>
-                <li><a href="leistungen.html">Potenziale</a></li>
-                <li><a href="studio.html">Studio</a></li>
+                <li><a href="arbeiten.html">SHOWCASE</a></li>
+                <li><a href="leistungen.html">POTENZIALE</a></li>
+                <li><a href="studio.html">STUDIO</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="kontakt.html" class="btn-cta">PROJEKT ANFRAGEN</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- BLOCK 1: HERO SECTION -->
     <section class="hero">
         <div class="container hero-grid">
             <div>
-                <span class="section-tag">Digitale Markenarchitektur</span>
+                <span class="section-tag">DIGITALE MARKENARCHITEKTUR</span>
                 <h1>Mehr Umsatz & Ansehen für <em>ambitionierte</em> Unternehmen.</h1>
                 <p class="hero-sub">Wir entwickeln maßgeschneiderte digitale Ökosysteme für zukunftsorientierte Marken, Dienstleister und Erlebnis-Brands mit hohem Qualitätsanspruch.</p>
                 <div class="hero-actions">
@@ -607,41 +539,10 @@
         </div>
     </section>
 
-    <!-- Sektion 01 / Selected Works -->
-    <section id="work">
-        <div class="container">
-            <span class="section-tag">01 / Selected Work</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 3rem; color:var(--text-primary);">Ergebnisse durch Maßarbeit.</h2>
-
-            <div class="case-study-card">
-                <div class="case-content">
-                    <span class="case-tag" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary);">Brand Experience & Automatisierung</span>
-                    <h3 style="font-family:var(--font-serif); font-size:2.2rem; font-weight:400; margin:0.5rem 0 1rem; color:var(--text-primary);">Atelier Vevét — Service Concept</h3>
-                    <p style="color:var(--text-secondary); font-weight:300; margin-bottom:1.5rem;">Neupositionierung einer exklusiven Dienstleistungsmarke. Ein elegantes Interface mit nahtlos integrierter Kapazitätsplanung sichert die Auslastung vollautomatisch.</p>
-                </div>
-
-                <div class="phone-mockup-frame">
-                    <div class="phone-screen">
-                        <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.6; color:var(--text-primary);">Atelier Vevét</div>
-                        <div style="margin: 1.5rem 0;">
-                            <div style="font-family:var(--font-serif); font-size:1.3rem; line-height:1.2; color:var(--text-primary);">Präzision in jedem Detail.</div>
-                            <p style="font-size:0.7rem; color:var(--text-secondary); margin-top:0.4rem;">Maßgeschneiderte Exzellenz.</p>
-                        </div>
-                        <div style="background-color:var(--text-primary); color:#FFFFFF; text-align:center; padding:0.6rem; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em;">Termin Wählen</div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="arbeiten.html" class="btn btn-outline">Alle Arbeiten ansehen &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sektion 02 / Potenziale & ROI -->
+    <!-- BLOCK 2: WAS DIE KUNDEN DAVON HABEN / ROI -->
     <section id="roi">
         <div class="container">
-            <span class="section-tag">02 / Potenziale & ROI</span>
+            <span class="section-tag">01 / POTENZIALE & ROI</span>
             <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; max-width: 700px; margin-bottom: 1rem; color:var(--text-primary);">Mögliche Kennzahlen & Zielsetzungen.</h2>
             <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; font-weight: 300;">Gezielte digitale Architektur adressiert die Schwachstellen klassischer Websites und verwandelt Besucher verlässlich in Kunden.</p>
 
@@ -667,11 +568,11 @@
         </div>
     </section>
 
-    <!-- Sektion 03 / Studio & Manifest -->
+    <!-- BLOCK 3: WAS UNS AUSMACHT / STUDIO -->
     <section id="about">
         <div class="container">
             <div style="max-width: 850px;">
-                <span class="section-tag">03 / Studio-Philosophie</span>
+                <span class="section-tag">02 / STUDIO-PHILOSOPHIE</span>
                 <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; line-height: 1.15; margin-bottom: 2rem; color:var(--text-primary);">„Persönliche Betreuung statt anonymer Großagentur.“</h2>
                 <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300;">Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
 
@@ -682,7 +583,7 @@
                 <div class="founder-seal">
                     <div class="founder-avatar">FF</div>
                     <div>
-                        <h5 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:500; color:var(--text-primary);">Founder & Lead Architect</h5>
+                        <h5 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:500; color:var(--text-primary);">Direkter Draht zum Lead Architect</h5>
                         <p style="font-size:0.85rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.08em;">FormFlowStudio</p>
                     </div>
                 </div>
@@ -690,41 +591,11 @@
         </div>
     </section>
 
-    <!-- Sektion 04 / FAQ Teaser -->
-    <section id="faq-teaser">
-        <div class="container">
-            <span class="section-tag">04 / Häufige Fragen</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 3rem; color:var(--text-primary);">Transparenz von Beginn an.</h2>
-
-            <div class="faq-accordion" style="max-width: 900px;">
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-header">
-                        <div class="faq-question">Wie unterscheidet sich FormFlowStudio von Standard-Agenturen?</div>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">Wir arbeiten ohne fertige Template-Baukästen. Jedes Websystem wird individuell von Grund auf programmiert – für maximale Geschwindigkeit, absolute Designfreiheit und exklusive Markenwirkung.</div>
-                </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-header">
-                        <div class="faq-question">Wie lange dauert die Umsetzung eines Projekts?</div>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">In der Regel liegt der Projektzeitraum zwischen 4 und 8 Wochen ab der ersten Konzeptphase, abhängig vom Umfang des digitalen Ökosystems.</div>
-                </div>
-            </div>
-
-            <div style="margin-top: 2.5rem;">
-                <a href="faq.html" class="btn btn-outline">Alle Fragen & Antworten ansehen &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sektion 05 / Split-Screen Kontakt -->
+    <!-- BLOCK 4: ABSCHNITT 05 / ERSTKONTAKT (SPLIT-SCREEN FORM) -->
     <section id="kontakt-preview" class="contact-section" style="background-color: var(--surface-studio);">
         <div class="container contact-split-grid">
             <div>
-                <span class="section-tag">05 / Erstkontakt</span>
+                <span class="section-tag">03 / ERSTKONTAKT</span>
                 <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1.5rem; color:var(--text-primary);">Projekt starten.</h2>
                 <p style="color: var(--text-secondary); font-weight: 300; margin-bottom: 2rem;">Lassen Sie uns unverbindlich über die Potenziale Ihres digitalen Auftritts sprechen.</p>
                 
@@ -796,11 +667,11 @@
                 <div class="footer-links">
                     <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Navigation</h6>
                     <ul>
-                        <li><a href="arbeiten.html">Showcase</a></li>
-                        <li><a href="leistungen.html">Potenziale</a></li>
-                        <li><a href="studio.html">Studio</a></li>
+                        <li><a href="arbeiten.html">SHOWCASE</a></li>
+                        <li><a href="leistungen.html">POTENZIALE</a></li>
+                        <li><a href="studio.html">STUDIO</a></li>
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="kontakt.html">KONTAKT</a></li>
                     </ul>
                 </div>
 
@@ -829,10 +700,6 @@
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
-
-        function toggleFaq(element) {
-            element.classList.toggle('active');
-        }
 
         document.querySelectorAll('.option-card').forEach(card => {
             card.addEventListener('click', function() {
