@@ -54,7 +54,7 @@
             padding: 0 1.25rem;
         }
 
-        /* Header Base Mobile */
+        /* Header Base & Perfect Vertical Alignment */
         header {
             position: fixed;
             top: 0;
@@ -80,6 +80,26 @@
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .mobile-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            height: 24px;
+            width: 24px;
+        }
+
+        .mobile-toggle svg {
+            display: block;
         }
 
         .nav-menu {
@@ -110,15 +130,6 @@
             color: var(--text-muted);
             font-weight: 500;
             transition: color 0.3s var(--ease);
-        }
-
-        .mobile-toggle {
-            display: block;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            margin-left: auto;
         }
 
         /* Buttons & Elements */
@@ -396,13 +407,10 @@
             color: var(--text-muted);
         }
 
-        /* ======================================================================
-           1. MEDIA-QUERY SCOPING (iPAD & DESKTOP: >= 768px / 1024px)
-           ====================================================================== */
+        /* Tablet/Desktop Styles */
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
 
-            /* Navigation Refactoring */
             .mobile-toggle { display: none !important; }
 
             .nav-menu {
@@ -418,7 +426,6 @@
 
             section { padding: 7rem 0; }
 
-            /* Hero 20% Reduced Padding-Top/Bottom */
             .hero {
                 padding-top: 100px;
                 padding-bottom: 3rem;
@@ -435,7 +442,6 @@
             .hero h1 { font-size: 3.8rem; }
             .mockup-card { margin-top: 0; }
 
-            /* Case Study Single Showcase */
             .case-study-card {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -446,7 +452,6 @@
 
             .phone-mockup-frame { margin: 0 auto; }
 
-            /* ROI 3-Spalten Editorial Grid */
             .comparison-wrapper {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -459,13 +464,11 @@
                 padding: 2.5rem 2rem;
             }
 
-            /* Option Selector Grid */
             .option-selector {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
             }
 
-            /* Split-Screen Contact Layout */
             .contact-split-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -473,7 +476,6 @@
                 align-items: start;
             }
 
-            /* Footer Grid Tablet */
             .footer-grid {
                 grid-template-columns: 1.5fr 1fr 1fr;
             }
@@ -497,7 +499,7 @@
     <!-- Header Navigation -->
     <header>
         <div class="container nav">
-            <a href="/index.html" class="logo-brand">FormFlowStudio</a>
+            <a href="index.html" class="logo-brand">FormFlowStudio</a>
 
             <button class="mobile-toggle" id="menuToggle" aria-label="Menü öffnen">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2">
@@ -508,11 +510,11 @@
             </button>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="/arbeiten.html">Showcase</a></li>
-                <li><a href="/leistungen.html">Potenziale</a></li>
-                <li><a href="/studio.html">Studio</a></li>
-                <li><a href="/faq.html">FAQ</a></li>
-                <li><a href="/kontakt.html" class="btn btn-outline" style="padding: 0.6rem 1.4rem;">PROJEKT ANFRAGEN</a></li>
+                <li><a href="arbeiten.html">Showcase</a></li>
+                <li><a href="leistungen.html">Potenziale</a></li>
+                <li><a href="studio.html">Studio</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="kontakt.html" class="btn btn-outline" style="padding: 0.6rem 1.4rem;">PROJEKT ANFRAGEN</a></li>
             </ul>
         </div>
     </header>
@@ -525,8 +527,8 @@
                 <h1>Mehr Umsatz & Ansehen für <em>ambitionierte</em> Unternehmen.</h1>
                 <p class="hero-sub">Wir entwickeln maßgeschneiderte digitale Ökosysteme für zukunftsorientierte Marken, Dienstleister und Erlebnis-Brands mit hohem Qualitätsanspruch.</p>
                 <div class="hero-actions">
-                    <a href="/kontakt.html" class="btn">Erstgespräch anfordern</a>
-                    <a href="/arbeiten.html" class="btn btn-outline">Projekte entdecken</a>
+                    <a href="kontakt.html" class="btn">Erstgespräch anfordern</a>
+                    <a href="arbeiten.html" class="btn btn-outline">Projekte entdecken</a>
                 </div>
             </div>
 
@@ -547,7 +549,7 @@
         </div>
     </section>
 
-    <!-- Sektion 01 / Selected Works (Exact 1 Flagship Project) -->
+    <!-- Sektion 01 / Selected Works -->
     <section id="work">
         <div class="container">
             <span class="section-tag">01 / Selected Work</span>
@@ -573,7 +575,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="/arbeiten.html" class="btn btn-outline">Alle Arbeiten ansehen &rarr;</a>
+                <a href="arbeiten.html" class="btn btn-outline">Alle Arbeiten ansehen &rarr;</a>
             </div>
         </div>
     </section>
@@ -616,10 +618,9 @@
                 <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300;">Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
 
                 <div style="margin-top: 2rem;">
-                    <a href="/studio.html" class="btn btn-outline">Mehr über das Studio &rarr;</a>
+                    <a href="studio.html" class="btn btn-outline">Mehr über das Studio &rarr;</a>
                 </div>
 
-                <!-- Founder Seal am Ende des Abschnitts -->
                 <div class="founder-seal">
                     <div class="founder-avatar">FF</div>
                     <div>
@@ -631,7 +632,7 @@
         </div>
     </section>
 
-    <!-- Sektion 04 / FAQ Teaser Accordion -->
+    <!-- Sektion 04 / FAQ Teaser -->
     <section id="faq-teaser">
         <div class="container">
             <span class="section-tag">04 / Häufige Fragen</span>
@@ -656,7 +657,7 @@
             </div>
 
             <div style="margin-top: 2.5rem;">
-                <a href="/faq.html" class="btn btn-outline">Alle Fragen & Antworten ansehen &rarr;</a>
+                <a href="faq.html" class="btn btn-outline">Alle Fragen & Antworten ansehen &rarr;</a>
             </div>
         </div>
     </section>
@@ -730,18 +731,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/index.html" class="logo-brand">FormFlowStudio</a>
+                    <a href="index.html" class="logo-brand">FormFlowStudio</a>
                     <p style="color:var(--text-muted); font-size:0.9rem; margin-top:1rem; font-weight:300;">Studio für digitale Markenarchitektur, High-Performance-Websites und nahtlose Prozess-Automatisierung.</p>
                 </div>
 
                 <div class="footer-links">
                     <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem;">Navigation</h6>
                     <ul>
-                        <li><a href="/arbeiten.html">Showcase</a></li>
-                        <li><a href="/leistungen.html">Potenziale</a></li>
-                        <li><a href="/studio.html">Studio</a></li>
-                        <li><a href="/faq.html">FAQ</a></li>
-                        <li><a href="/kontakt.html">Kontakt</a></li>
+                        <li><a href="arbeiten.html">Showcase</a></li>
+                        <li><a href="leistungen.html">Potenziale</a></li>
+                        <li><a href="studio.html">Studio</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
                     </ul>
                 </div>
 
