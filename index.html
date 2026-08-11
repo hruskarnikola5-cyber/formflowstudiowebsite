@@ -10,13 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        /* ======================================================================
+           1. COLOR PALETTE UPDATE (PURE MONOCHROME)
+           ====================================================================== */
         :root {
-            --bg-creme: #f9f7f2;
-            --surface-creme: #f2ede4;
-            --text-dark: #121212;
-            --text-muted: #666259;
-            --border-line: rgba(18, 18, 18, 0.08);
-            --border-hover: rgba(18, 18, 18, 0.25);
+            --bg-main: #FFFFFF;             /* Reinweiß */
+            --surface-studio: #F5F5F7;      /* Neutrales Studio-Grau */
+            --text-primary: #0A0A0A;        /* Tiefschwarz */
+            --text-secondary: #666666;      /* Neutralgrau */
+            --border-neutral: #E5E5E5;      /* Hellgraue Trennlinien */
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Inter', sans-serif;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -31,12 +33,12 @@
 
         html {
             scroll-behavior: smooth;
-            background-color: var(--bg-creme);
+            background-color: var(--bg-main);
         }
 
         body {
-            background-color: var(--bg-creme);
-            color: var(--text-dark);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
             line-height: 1.6;
@@ -54,24 +56,26 @@
             padding: 0 1.25rem;
         }
 
-        /* Header Base & Perfect Vertical Alignment */
+        /* ======================================================================
+           2. HEADER & NAVIGATION BASE (MOBILE & BREAKPOINT-UNTOUCHED)
+           ====================================================================== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(249, 247, 242, 0.88);
+            background-color: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-neutral);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 85px;
+            height: 75px;
         }
 
         .logo-brand {
@@ -79,7 +83,7 @@
             font-size: 1.6rem;
             font-weight: 500;
             letter-spacing: -0.01em;
-            color: var(--text-dark);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             line-height: 1;
@@ -98,20 +102,16 @@
             width: 24px;
         }
 
-        .mobile-toggle svg {
-            display: block;
-        }
-
         .nav-menu {
             position: fixed;
-            top: 85px;
+            top: 75px;
             left: 0;
             width: 100%;
-            background-color: var(--bg-creme);
+            background-color: var(--bg-main);
             flex-direction: column;
             padding: 2.5rem 0;
             gap: 2rem;
-            border-bottom: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-neutral);
             transform: translateY(-150%);
             transition: transform 0.4s var(--ease);
             display: flex;
@@ -127,50 +127,53 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-weight: 500;
-            transition: color 0.3s var(--ease);
+            transition: color 0.2s ease;
         }
 
-        /* Buttons & Elements */
+        .nav-menu a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Buttons & Base Components */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1.1rem 2.4rem;
-            background-color: var(--text-dark);
-            color: var(--bg-creme);
-            font-size: 0.8rem;
+            padding: 12px 24px;
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.14em;
+            letter-spacing: 0.08em;
             font-weight: 500;
-            border: 1px solid var(--text-dark);
+            border: none;
             cursor: pointer;
-            transition: all 0.4s var(--ease);
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
         .btn:hover {
-            background-color: transparent;
-            color: var(--text-dark);
+            background-color: #222222;
         }
 
         .btn-outline {
             background-color: transparent;
-            color: var(--text-dark);
-            border-color: var(--border-hover);
+            color: var(--text-primary);
+            border: 1px solid var(--border-neutral);
         }
 
         .btn-outline:hover {
-            background-color: var(--text-dark);
-            color: var(--bg-creme);
-            border-color: var(--text-dark);
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+            border-color: var(--text-primary);
         }
 
         .section-tag {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
             display: block;
             font-weight: 500;
@@ -178,9 +181,10 @@
 
         section {
             padding: 5rem 0;
-            border-top: 1px solid var(--border-line);
+            border-top: 1px solid var(--border-neutral);
         }
 
+        /* Hero Section */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -195,13 +199,14 @@
             font-weight: 400;
             line-height: 1.08;
             margin-bottom: 2rem;
+            color: var(--text-primary);
         }
 
         .hero h1 em { font-style: italic; }
 
         .hero-sub {
             font-size: 1.05rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 2.5rem;
             font-weight: 300;
         }
@@ -214,22 +219,21 @@
 
         .mockup-card {
             width: 100%;
-            background-color: var(--surface-creme);
-            border: 1px solid var(--border-hover);
-            border-radius: 8px;
+            background-color: var(--surface-studio);
+            border: 1px solid var(--border-neutral);
             padding: 1.5rem;
             margin-top: 2rem;
         }
 
         .case-study-card {
-            background-color: var(--surface-creme);
+            background-color: var(--surface-studio);
             padding: 2rem;
-            border: 1px solid var(--border-line);
+            border: 1px solid var(--border-neutral);
             margin-bottom: 2rem;
         }
 
         .phone-mockup-frame {
-            background-color: #0d0d0d;
+            background-color: #0A0A0A;
             border-radius: 32px;
             padding: 12px;
             max-width: 300px;
@@ -237,7 +241,7 @@
         }
 
         .phone-screen {
-            background-color: var(--bg-creme);
+            background-color: var(--bg-main);
             border-radius: 22px;
             padding: 2rem 1rem;
             min-height: 360px;
@@ -248,8 +252,8 @@
 
         .roi-card {
             padding: 2rem;
-            background-color: var(--surface-creme);
-            border: 1px solid var(--border-line);
+            background-color: var(--surface-studio);
+            border: 1px solid var(--border-neutral);
             margin-bottom: 1.5rem;
         }
 
@@ -260,7 +264,7 @@
         }
 
         .faq-item {
-            border-bottom: 1px solid rgba(18, 18, 18, 0.1);
+            border-bottom: 1px solid var(--border-neutral);
             padding: 1.5rem 0;
             cursor: pointer;
         }
@@ -289,7 +293,7 @@
             transition: max-height 0.4s var(--ease), padding-top 0.4s var(--ease);
             font-family: var(--font-sans);
             font-size: 0.95rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-weight: 300;
         }
 
@@ -306,7 +310,7 @@
         .founder-seal {
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--border-line);
+            border-top: 1px solid var(--border-neutral);
             display: flex;
             align-items: center;
             gap: 1.5rem;
@@ -316,8 +320,8 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: var(--surface-creme);
-            border: 1px solid var(--border-hover);
+            background-color: var(--surface-studio);
+            border: 1px solid var(--border-neutral);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -335,8 +339,8 @@
 
         .option-card {
             padding: 1rem 1.2rem;
-            border: 1px solid var(--border-line);
-            background-color: var(--bg-creme);
+            border: 1px solid var(--border-neutral);
+            background-color: var(--bg-main);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -344,8 +348,8 @@
         }
 
         .option-card.active {
-            border-color: var(--text-dark);
-            background-color: #ffffff;
+            border-color: var(--text-primary);
+            background-color: var(--surface-studio);
         }
 
         .option-card input { display: none; }
@@ -354,11 +358,11 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid #000000;
+            border-bottom: 1px solid var(--text-primary);
             padding: 0.8rem 0;
             font-family: var(--font-sans);
             font-size: 1rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
             outline: none;
             border-radius: 0;
         }
@@ -379,7 +383,7 @@
         /* Footer Base */
         footer {
             padding: 4rem 0 2rem;
-            border-top: 1px solid var(--border-line);
+            border-top: 1px solid var(--border-neutral);
         }
 
         .footer-grid {
@@ -402,17 +406,30 @@
             gap: 0.8rem;
             text-align: center;
             padding-top: 1.5rem;
-            border-top: 1px solid var(--border-line);
+            border-top: 1px solid var(--border-neutral);
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
-        /* Tablet/Desktop Styles */
+        /* ======================================================================
+           2. HEADER REDESIGN & TABLET/DESKTOP BREAKPOINT (>= 768px)
+           ====================================================================== */
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
 
+            /* Header Padding: 24px Top/Bottom, 48px Left/Right */
+            header .container.nav {
+                max-width: 100%;
+                padding: 24px 48px;
+            }
+
+            nav {
+                height: auto;
+            }
+
             .mobile-toggle { display: none !important; }
 
+            /* Desktop Nav Right-Block Container */
             .nav-menu {
                 position: static;
                 transform: none;
@@ -420,14 +437,56 @@
                 padding: 0;
                 background: transparent;
                 border: none;
-                gap: 2rem;
+                gap: 0; /* Gesteuert über Margin-Right */
                 width: auto;
+            }
+
+            .nav-menu li {
+                display: flex;
+                align-items: center;
+            }
+
+            /* Links 12px Uppercase, Letter-Spacing: 0.08em, Color #666666 */
+            .nav-menu li:not(:last-child) a {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                font-weight: 500;
+                color: var(--text-secondary);
+                margin-right: 32px;
+                transition: color 0.2s ease;
+            }
+
+            .nav-menu li:not(:last-child) a:hover {
+                color: var(--text-primary);
+            }
+
+            /* Dedicated CTA Button Styling */
+            .nav-menu li:last-child {
+                margin-left: 32px; /* Margin-Left zum letzten Link */
+            }
+
+            .nav-menu li:last-child a.btn-cta {
+                background-color: #000000;
+                color: #FFFFFF;
+                padding: 12px 24px;
+                font-size: 12px;
+                letter-spacing: 0.08em;
+                font-weight: 500;
+                border-radius: 0px;
+                border: none;
+                transition: background-color 0.2s ease;
+            }
+
+            .nav-menu li:last-child a.btn-cta:hover {
+                background-color: #222222;
+                color: #FFFFFF;
             }
 
             section { padding: 7rem 0; }
 
             .hero {
-                padding-top: 100px;
+                padding-top: 120px;
                 padding-bottom: 3rem;
                 min-height: 75vh;
             }
@@ -489,7 +548,6 @@
 
         @media (min-width: 1024px) {
             .hero h1 { font-size: 4.5rem; }
-            .nav-menu { gap: 2.8rem; }
             .contact-split-grid { gap: 6rem; }
         }
     </style>
@@ -502,7 +560,7 @@
             <a href="index.html" class="logo-brand">FormFlowStudio</a>
 
             <button class="mobile-toggle" id="menuToggle" aria-label="Menü öffnen">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -514,7 +572,7 @@
                 <li><a href="leistungen.html">Potenziale</a></li>
                 <li><a href="studio.html">Studio</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="kontakt.html" class="btn btn-outline" style="padding: 0.6rem 1.4rem;">PROJEKT ANFRAGEN</a></li>
+                <li><a href="kontakt.html" class="btn-cta">PROJEKT ANFRAGEN</a></li>
             </ul>
         </div>
     </header>
@@ -535,14 +593,14 @@
             <div class="hero-visual">
                 <div class="mockup-card">
                     <div class="mockup-header" style="display:flex; gap:6px; margin-bottom:1rem;">
-                        <div style="width:8px; height:8px; border-radius:50%; background:#ccc;"></div>
-                        <div style="width:8px; height:8px; border-radius:50%; background:#ccc;"></div>
-                        <div style="width:8px; height:8px; border-radius:50%; background:#ccc;"></div>
+                        <div style="width:8px; height:8px; border-radius:50%; background:#CCCCCC;"></div>
+                        <div style="width:8px; height:8px; border-radius:50%; background:#CCCCCC;"></div>
+                        <div style="width:8px; height:8px; border-radius:50%; background:#CCCCCC;"></div>
                     </div>
-                    <div class="mockup-body" style="background:#fff; padding:2rem; border:1px solid var(--border-line);">
-                        <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted);">Brand Identity & Interface</span>
-                        <h2 style="font-family:var(--font-serif); font-size:1.8rem; margin:0.5rem 0 1rem; font-weight:400;">Tailored Digital Experience</h2>
-                        <p style="font-size:0.85rem; color:var(--text-muted); font-weight:300;">Nahtlose Buchungsprozesse gekoppelt mit kompromissloser visueller Ästhetik.</p>
+                    <div class="mockup-body" style="background:#FFFFFF; padding:2rem; border:1px solid var(--border-neutral);">
+                        <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary);">Brand Identity & Interface</span>
+                        <h2 style="font-family:var(--font-serif); font-size:1.8rem; margin:0.5rem 0 1rem; font-weight:400; color:var(--text-primary);">Tailored Digital Experience</h2>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); font-weight:300;">Nahtlose Buchungsprozesse gekoppelt mit kompromissloser visueller Ästhetik.</p>
                     </div>
                 </div>
             </div>
@@ -553,23 +611,23 @@
     <section id="work">
         <div class="container">
             <span class="section-tag">01 / Selected Work</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 3rem;">Ergebnisse durch Maßarbeit.</h2>
+            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 3rem; color:var(--text-primary);">Ergebnisse durch Maßarbeit.</h2>
 
             <div class="case-study-card">
                 <div class="case-content">
-                    <span class="case-tag" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted);">Brand Experience & Automatisierung</span>
-                    <h3 style="font-family:var(--font-serif); font-size:2.2rem; font-weight:400; margin:0.5rem 0 1rem;">Atelier Vevét — Service Concept</h3>
-                    <p style="color:var(--text-muted); font-weight:300; margin-bottom:1.5rem;">Neupositionierung einer exklusiven Dienstleistungsmarke. Ein elegantes Interface mit nahtlos integrierter Kapazitätsplanung sichert die Auslastung vollautomatisch.</p>
+                    <span class="case-tag" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary);">Brand Experience & Automatisierung</span>
+                    <h3 style="font-family:var(--font-serif); font-size:2.2rem; font-weight:400; margin:0.5rem 0 1rem; color:var(--text-primary);">Atelier Vevét — Service Concept</h3>
+                    <p style="color:var(--text-secondary); font-weight:300; margin-bottom:1.5rem;">Neupositionierung einer exklusiven Dienstleistungsmarke. Ein elegantes Interface mit nahtlos integrierter Kapazitätsplanung sichert die Auslastung vollautomatisch.</p>
                 </div>
 
                 <div class="phone-mockup-frame">
                     <div class="phone-screen">
-                        <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.6;">Atelier Vevét</div>
+                        <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.6; color:var(--text-primary);">Atelier Vevét</div>
                         <div style="margin: 1.5rem 0;">
-                            <div style="font-family:var(--font-serif); font-size:1.3rem; line-height:1.2;">Präzision in jedem Detail.</div>
-                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.4rem;">Maßgeschneiderte Exzellenz.</p>
+                            <div style="font-family:var(--font-serif); font-size:1.3rem; line-height:1.2; color:var(--text-primary);">Präzision in jedem Detail.</div>
+                            <p style="font-size:0.7rem; color:var(--text-secondary); margin-top:0.4rem;">Maßgeschneiderte Exzellenz.</p>
                         </div>
-                        <div style="background-color:var(--text-dark); color:#fff; text-align:center; padding:0.6rem; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em;">Termin Wählen</div>
+                        <div style="background-color:var(--text-primary); color:#FFFFFF; text-align:center; padding:0.6rem; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em;">Termin Wählen</div>
                     </div>
                 </div>
             </div>
@@ -584,26 +642,26 @@
     <section id="roi">
         <div class="container">
             <span class="section-tag">02 / Potenziale & ROI</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; max-width: 700px; margin-bottom: 1rem;">Mögliche Kennzahlen & Zielsetzungen.</h2>
-            <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 650px; font-weight: 300;">Gezielte digitale Architektur adressiert die Schwachstellen klassischer Websites und verwandelt Besucher verlässlich in Kunden.</p>
+            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; max-width: 700px; margin-bottom: 1rem; color:var(--text-primary);">Mögliche Kennzahlen & Zielsetzungen.</h2>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; font-weight: 300;">Gezielte digitale Architektur adressiert die Schwachstellen klassischer Websites und verwandelt Besucher verlässlich in Kunden.</p>
 
             <div class="comparison-wrapper">
                 <div class="roi-card">
-                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted); font-weight:600; display:block; margin-bottom:1rem;">Conversion Rate</span>
-                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem;">Optimierte Buchungsquote</h3>
-                    <p style="color:var(--text-muted); font-size:0.95rem; font-weight:300;">Nahtlose, barrierefreie Nutzerführung, die Website-Besucher ohne Hürden zu echten Buchungen und Anfragen konvertiert.</p>
+                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary); font-weight:600; display:block; margin-bottom:1rem;">Conversion Rate</span>
+                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem; color:var(--text-primary);">Optimierte Buchungsquote</h3>
+                    <p style="color:var(--text-secondary); font-size:0.95rem; font-weight:300;">Nahtlose, barrierefreie Nutzerführung, die Website-Besucher ohne Hürden zu echten Buchungen und Anfragen konvertiert.</p>
                 </div>
 
                 <div class="roi-card">
-                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted); font-weight:600; display:block; margin-bottom:1rem;">Effizienz</span>
-                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem;">Automatisierter Workflow</h3>
-                    <p style="color:var(--text-muted); font-size:0.95rem; font-weight:300;">Digitale Termin- und Reservierungssysteme sparen tägliche Verwaltungszeit und reduzieren Ausfälle durch Erinnerungen.</p>
+                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary); font-weight:600; display:block; margin-bottom:1rem;">Effizienz</span>
+                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem; color:var(--text-primary);">Automatisierter Workflow</h3>
+                    <p style="color:var(--text-secondary); font-size:0.95rem; font-weight:300;">Digitale Termin- und Reservierungssysteme sparen tägliche Verwaltungszeit und reduzieren Ausfälle durch Erinnerungen.</p>
                 </div>
 
                 <div class="roi-card">
-                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted); font-weight:600; display:block; margin-bottom:1rem;">Performance</span>
-                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem;">High-Speed Performance</h3>
-                    <p style="color:var(--text-muted); font-size:0.95rem; font-weight:300;">Ladezeiten unter 0,5 Sekunden garantieren minimale Absprungraten und beste Platzierungen bei Google.</p>
+                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary); font-weight:600; display:block; margin-bottom:1rem;">Performance</span>
+                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem; color:var(--text-primary);">High-Speed Performance</h3>
+                    <p style="color:var(--text-secondary); font-size:0.95rem; font-weight:300;">Ladezeiten unter 0,5 Sekunden garantieren minimale Absprungraten und beste Platzierungen bei Google.</p>
                 </div>
             </div>
         </div>
@@ -614,8 +672,8 @@
         <div class="container">
             <div style="max-width: 850px;">
                 <span class="section-tag">03 / Studio-Philosophie</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; line-height: 1.15; margin-bottom: 2rem;">„Persönliche Betreuung statt anonymer Großagentur.“</h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300;">Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
+                <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; line-height: 1.15; margin-bottom: 2rem; color:var(--text-primary);">„Persönliche Betreuung statt anonymer Großagentur.“</h2>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300;">Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
 
                 <div style="margin-top: 2rem;">
                     <a href="studio.html" class="btn btn-outline">Mehr über das Studio &rarr;</a>
@@ -624,8 +682,8 @@
                 <div class="founder-seal">
                     <div class="founder-avatar">FF</div>
                     <div>
-                        <h5 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:500;">Founder & Lead Architect</h5>
-                        <p style="font-size:0.85rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em;">FormFlowStudio</p>
+                        <h5 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:500; color:var(--text-primary);">Founder & Lead Architect</h5>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.08em;">FormFlowStudio</p>
                     </div>
                 </div>
             </div>
@@ -636,7 +694,7 @@
     <section id="faq-teaser">
         <div class="container">
             <span class="section-tag">04 / Häufige Fragen</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 3rem;">Transparenz von Beginn an.</h2>
+            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 3rem; color:var(--text-primary);">Transparenz von Beginn an.</h2>
 
             <div class="faq-accordion" style="max-width: 900px;">
                 <div class="faq-item" onclick="toggleFaq(this)">
@@ -663,18 +721,18 @@
     </section>
 
     <!-- Sektion 05 / Split-Screen Kontakt -->
-    <section id="kontakt-preview" class="contact-section" style="background-color: var(--surface-creme);">
+    <section id="kontakt-preview" class="contact-section" style="background-color: var(--surface-studio);">
         <div class="container contact-split-grid">
             <div>
                 <span class="section-tag">05 / Erstkontakt</span>
-                <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1.5rem;">Projekt starten.</h2>
-                <p style="color: var(--text-muted); font-weight: 300; margin-bottom: 2rem;">Lassen Sie uns unverbindlich über die Potenziale Ihres digitalen Auftritts sprechen.</p>
+                <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1.5rem; color:var(--text-primary);">Projekt starten.</h2>
+                <p style="color: var(--text-secondary); font-weight: 300; margin-bottom: 2rem;">Lassen Sie uns unverbindlich über die Potenziale Ihres digitalen Auftritts sprechen.</p>
                 
                 <div style="display: flex; align-items: center; gap: 1rem; margin-top: 2rem;">
                     <div class="founder-avatar" style="width: 50px; height: 50px; font-size: 0.9rem;">FF</div>
                     <div>
-                        <div style="font-weight: 600; font-size: 0.9rem;">Direkter Draht zum Lead Architect</div>
-                        <div style="font-size: 0.85rem; color: var(--text-muted);">hello@formflowstudio.de</div>
+                        <div style="font-weight: 600; font-size: 0.9rem; color:var(--text-primary);">Direkter Draht zum Lead Architect</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">hello@formflowstudio.de</div>
                     </div>
                 </div>
             </div>
@@ -732,11 +790,11 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo-brand">FormFlowStudio</a>
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-top:1rem; font-weight:300;">Studio für digitale Markenarchitektur, High-Performance-Websites und nahtlose Prozess-Automatisierung.</p>
+                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:1rem; font-weight:300;">Studio für digitale Markenarchitektur, High-Performance-Websites und nahtlose Prozess-Automatisierung.</p>
                 </div>
 
                 <div class="footer-links">
-                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem;">Navigation</h6>
+                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Navigation</h6>
                     <ul>
                         <li><a href="arbeiten.html">Showcase</a></li>
                         <li><a href="leistungen.html">Potenziale</a></li>
@@ -747,7 +805,7 @@
                 </div>
 
                 <div class="footer-links">
-                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem;">Socials & Legal</h6>
+                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Socials & Legal</h6>
                     <ul>
                         <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
                         <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
