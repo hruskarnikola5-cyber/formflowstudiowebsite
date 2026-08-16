@@ -49,12 +49,14 @@
         }
 
         .container {
-            max-width: 1240px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.25rem;
         }
 
-        /* Mobile Header Base */
+        /* --------------------------------------------------
+           1. HEADER (MOBILE BASE & DESKTOP HOTFIX)
+        -------------------------------------------------- */
         header {
             position: fixed;
             top: 0;
@@ -67,23 +69,25 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
-        nav {
+        .header-container {
+            width: 100%;
+            height: 75px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 75px;
+            padding: 0 1.25rem;
+            margin: 0 auto;
         }
 
-        .logo-brand {
+        .header-logo {
             font-family: var(--font-serif);
             font-size: 1.5rem;
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--text-primary);
+            white-space: nowrap;
             display: flex;
             align-items: center;
-            line-height: 1;
-            white-space: nowrap;
         }
 
         .mobile-toggle {
@@ -99,7 +103,8 @@
             width: 24px;
         }
 
-        .nav-menu {
+        /* Mobile Drawer */
+        .header-nav-wrapper {
             position: fixed;
             top: 75px;
             left: 0;
@@ -112,23 +117,30 @@
             transform: translateY(-150%);
             transition: transform 0.4s var(--ease);
             display: flex;
-            list-style: none;
             align-items: center;
         }
 
-        .nav-menu.active {
+        .header-nav-wrapper.active {
             transform: translateY(0);
         }
 
-        .nav-menu a {
-            font-size: 0.8rem;
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--text-secondary);
             font-weight: 500;
         }
 
-        /* Buttons & Components */
+        /* Base Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -176,7 +188,7 @@
             border-top: 1px solid var(--border-neutral);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -217,7 +229,7 @@
             margin-top: 2rem;
         }
 
-        /* ROI Section Base */
+        /* ROI Cards */
         .roi-card {
             padding: 2rem;
             background-color: var(--surface-studio);
@@ -225,7 +237,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Studio Seal Base */
+        /* Studio Seal */
         .founder-seal {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -249,32 +261,60 @@
             font-weight: 600;
         }
 
-        /* Workflow Step Cards */
+        /* --------------------------------------------------
+           2. PROZESS-SEKTION (MOBILE BASE)
+        -------------------------------------------------- */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 3rem;
+        }
+
         .step-card {
-            padding: 2.5rem 2rem;
-            border-top: 1px solid var(--border-neutral);
-            background: var(--bg-main);
-            margin-bottom: 1.5rem;
+            background: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            padding: 24px;
         }
 
         .step-num {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.8rem;
+            font-size: 14px;
+            font-weight: 600;
+            color: #888;
+            margin-bottom: 16px;
         }
 
         .step-title {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 22px;
             font-weight: 400;
-            margin-bottom: 0.8rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
         }
 
         .step-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
             font-weight: 300;
+        }
+
+        .closing-box {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-neutral);
+        }
+
+        .closing-text {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
         }
 
         /* Footer Base */
@@ -308,37 +348,36 @@
             color: var(--text-secondary);
         }
 
-        /* ======================================================================
-           TABLET / DESKTOP BREAKPOINT (min-width: 768px / 1024px)
-           ====================================================================== */
+        /* ==================================================
+           BREAKPOINT: TABLET & DESKTOP (min-width: 768px)
+        ================================================== */
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
 
-            /* 1. Shopify-Style Header Layout */
+            /* Header Desktop Flexbox Fix */
             header {
                 min-height: 80px;
                 display: flex;
                 align-items: center;
             }
 
-            header .container.nav {
-                max-width: 100%;
-                padding: 20px 56px;
-                height: auto;
+            .header-container {
+                max-width: 1400px;
+                padding: 0 48px;
+                height: 80px;
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
+                align-items: center;
             }
 
-            .logo-brand {
+            .header-logo {
                 font-size: 26px;
-                margin-right: auto; /* Ganz links verankert */
+                margin-right: 0;
             }
 
             .mobile-toggle { display: none !important; }
 
-            /* Right Alignment & Gap */
-            .nav-menu {
+            .header-nav-wrapper {
                 position: static;
                 transform: none;
                 flex-direction: row;
@@ -348,33 +387,26 @@
                 width: auto;
                 display: flex;
                 align-items: center;
-                gap: 36px; /* 36px Gap zwischen den Links */
+                gap: 32px; /* Spacing zwischen Links-Gruppe und Button */
             }
 
-            .nav-menu li {
-                display: flex;
-                align-items: center;
+            .nav-links {
+                flex-direction: row;
+                gap: 28px; /* Spacing zwischen den Text-Links */
             }
 
-            .nav-menu li:not(:last-child) a {
+            .nav-links a {
                 font-size: 13px;
-                text-transform: uppercase;
                 letter-spacing: 0.08em;
-                font-weight: 500;
                 color: var(--text-secondary);
                 transition: color 0.2s ease;
             }
 
-            .nav-menu li:not(:last-child) a:hover {
+            .nav-links a:hover {
                 color: var(--text-primary);
             }
 
-            /* CTA Button mit 40px Abstand */
-            .nav-menu li:last-child {
-                margin-left: 40px;
-            }
-
-            .nav-menu li:last-child a.btn-cta {
+            .header-cta-btn {
                 background-color: #000000;
                 color: #FFFFFF;
                 padding: 12px 24px;
@@ -383,13 +415,15 @@
                 letter-spacing: 0.08em;
                 font-weight: 600;
                 border: none;
+                white-space: nowrap;
                 transition: background-color 0.2s ease;
             }
 
-            .nav-menu li:last-child a.btn-cta:hover {
+            .header-cta-btn:hover {
                 background-color: #222222;
             }
 
+            /* Section Desktop Spacings */
             section { padding: 7rem 0; }
 
             .hero {
@@ -419,17 +453,19 @@
                 padding: 2.5rem 2rem;
             }
 
-            /* 3 Schritte Workflow horizontal */
+            /* Prozess Grid Desktop */
             .steps-grid {
-                display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 2.5rem;
+                gap: 32px;
                 margin-top: 3.5rem;
             }
 
             .step-card {
-                margin-bottom: 0;
-                padding: 2rem 0 0 0;
+                padding: 32px;
+            }
+
+            .closing-box {
+                margin-top: 48px;
             }
 
             .footer-grid {
@@ -451,10 +487,12 @@
 </head>
 <body>
 
-    <!-- 1. Header Navigation (Shopify-Proportionen) -->
+    <!-- Header Navigation -->
     <header>
-        <div class="container nav">
-            <a href="index.html" class="logo-brand">FormFlowStudio</a>
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="index.html">FormFlowStudio</a>
+            </div>
 
             <button class="mobile-toggle" id="menuToggle" aria-label="Menü öffnen">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2">
@@ -464,17 +502,19 @@
                 </svg>
             </button>
 
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="arbeiten.html">SHOWCASE</a></li>
-                <li><a href="leistungen.html">POTENZIALE</a></li>
-                <li><a href="studio.html">STUDIO</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="kontakt.html" class="btn-cta">PROJEKT ANFRAGEN</a></li>
-            </ul>
+            <div class="header-nav-wrapper" id="navWrapper">
+                <ul class="nav-links">
+                    <li><a href="arbeiten.html">SHOWCASE</a></li>
+                    <li><a href="leistungen.html">POTENZIALE</a></li>
+                    <li><a href="studio.html">STUDIO</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+                <a href="kontakt.html" class="header-cta-btn">PROJEKT ANFRAGEN</a>
+            </div>
         </div>
     </header>
 
-    <!-- 2. Hero Section -->
+    <!-- 1. Hero Section -->
     <section class="hero">
         <div class="container hero-grid">
             <div>
@@ -504,7 +544,7 @@
         </div>
     </section>
 
-    <!-- 3. ROI Section -->
+    <!-- 2. ROI Section -->
     <section id="roi">
         <div class="container">
             <span class="section-tag">01 / POTENZIALE & ROI</span>
@@ -533,7 +573,7 @@
         </div>
     </section>
 
-    <!-- 4. Studio Section -->
+    <!-- 3. Studio Section -->
     <section id="about">
         <div class="container">
             <div style="max-width: 850px;">
@@ -556,7 +596,7 @@
         </div>
     </section>
 
-    <!-- 5. Projektablauf & Homepage Abschluss (Kein Formular, Reiner Call-To-Action) -->
+    <!-- 4. Projektablauf & Warum Wir -->
     <section id="workflow" style="background-color: var(--surface-studio);">
         <div class="container">
             <span class="section-tag">03 / PROJEKTABLAUF & WARUM WIR</span>
@@ -583,11 +623,11 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border-neutral);">
-                <p style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+            <div class="closing-box">
+                <p class="closing-text">
                     „Keine Massenabfertigung, kein Agentur-Wasserkopf. Direkte Zusammenarbeit mit messbarem unternehmerischem Mehrwert.“
                 </p>
-                <a href="kontakt.html" class="btn" style="padding: 16px 36px; font-size: 0.85rem;">Projekt anfragen &rarr;</a>
+                <a href="kontakt.html" class="btn" style="padding: 14px 28px;">Projekt anfragen &rarr;</a>
             </div>
         </div>
     </section>
@@ -597,7 +637,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo-brand">FormFlowStudio</a>
+                    <div class="header-logo" style="margin-bottom: 0.5rem;">
+                        <a href="index.html">FormFlowStudio</a>
+                    </div>
                     <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:1rem; font-weight:300;">Studio für digitale Markenarchitektur, High-Performance-Websites und nahtlose Prozess-Automatisierung.</p>
                 </div>
 
@@ -632,9 +674,10 @@
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+        const navWrapper = document.getElementById('navWrapper');
+
         menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            navWrapper.classList.toggle('active');
         });
     </script>
 </body>
