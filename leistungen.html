@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potenziale & Leistungen | FormFlowStudio</title>
+    <title>Leistungen & Spektrum | FormFlowStudio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,9 @@
         a { color: inherit; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
 
-        /* Header */
+        /* --------------------------------------------------
+           HEADER (SHOWCASE ERSETZT DURCH LEISTUNGEN)
+        -------------------------------------------------- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             background: rgba(255, 255, 255, 0.85);
@@ -58,31 +60,105 @@
         .nav-links a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); font-weight: 500; }
         .nav-links a.active { color: var(--text-primary); font-weight: 600; }
 
-        /* Page Hero */
+        /* --------------------------------------------------
+           HERO-BEREICH
+        -------------------------------------------------- */
         .page-hero { padding-top: 135px; padding-bottom: 3.5rem; }
         .hero-kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; display: block; }
         .page-headline { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 42px); line-height: 1.15; color: var(--text-primary); font-weight: 400; margin-bottom: 1rem; }
         .page-subline { font-size: 1.05rem; color: var(--text-secondary); font-weight: 300; max-width: 680px; }
 
-        /* Matrix Sections */
-        .matrix-container { display: flex; flex-direction: column; padding-bottom: 7rem; }
-        .matrix-row {
-            padding: 3rem 0; border-top: 1px solid var(--border-neutral);
-            display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+        /* --------------------------------------------------
+           INTERAKTIVER SPLIT-SCREEN (TABS LINKS / DETAILS RECHTS)
+        -------------------------------------------------- */
+        .services-split {
+            display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: 7rem;
+            border-top: 1px solid var(--border-neutral); padding-top: 3.5rem;
         }
-        .matrix-index { font-family: var(--font-sans); font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; }
-        .matrix-title { font-family: var(--font-serif); font-size: 28px; font-weight: 400; color: var(--text-primary); line-height: 1.2; }
-        .matrix-desc { font-size: 15px; line-height: 1.65; color: var(--text-secondary); font-weight: 300; }
-        .matrix-points { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-        .matrix-points li { font-size: 14px; color: var(--text-primary); font-weight: 400; }
-        .matrix-points li::before { content: "— "; color: var(--text-muted); }
 
-        /* Footer */
+        /* Linke Spalte: Tabs */
+        .services-tab-list {
+            display: flex; flex-direction: column; gap: 0.5rem; list-style: none;
+        }
+        .service-tab-btn {
+            width: 100%; text-align: left; background: transparent; border: none;
+            border-left: 2px solid transparent; padding: 1rem 1.25rem; font-family: var(--font-sans);
+            font-size: 15px; color: var(--text-secondary); cursor: pointer; transition: all 0.2s ease;
+        }
+        .service-tab-btn:hover {
+            color: var(--text-primary); background-color: var(--surface-studio);
+        }
+        .service-tab-btn.active {
+            border-left: 2px solid #000000; font-weight: 600; color: var(--text-primary);
+            background-color: var(--surface-studio);
+        }
+
+        /* Rechte Spalte: Detail-Ansicht */
+        .services-detail-pane {
+            display: none; animation: fadeIn 0.3s var(--ease) forwards;
+        }
+        .services-detail-pane.active {
+            display: flex; flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-detail-title {
+            font-family: var(--font-serif); font-size: 28px; font-weight: 500;
+            color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.2;
+        }
+        .service-detail-subline {
+            font-size: 15px; font-weight: 400; color: var(--text-primary);
+            margin-bottom: 1.5rem; line-height: 1.5;
+        }
+        
+        .service-process-block {
+            margin-bottom: 2rem; border-top: 1px solid var(--border-neutral); padding-top: 1.5rem;
+        }
+        .service-section-label {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--text-muted); font-weight: 600; margin-bottom: 0.75rem; display: block;
+        }
+        .service-process-text {
+            font-size: 14.5px; line-height: 1.7; color: var(--text-secondary); font-weight: 300;
+        }
+
+        /* Checkliste Line-Style */
+        .spec-checklist {
+            list-style: none; display: flex; flex-direction: column; margin-bottom: 2.5rem;
+            border-top: 1px solid var(--border-neutral);
+        }
+        .spec-check-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.85rem 0; border-bottom: 1px solid var(--border-neutral);
+            font-size: 14px; color: var(--text-primary); font-weight: 400;
+        }
+        .check-icon {
+            font-size: 13px; font-weight: 600; color: var(--text-primary); margin-left: 1rem;
+        }
+
+        .btn-detail-cta {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 28px; background-color: #000000; color: #FFFFFF;
+            font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+            border: none; cursor: pointer; width: fit-content; transition: background-color 0.2s ease;
+        }
+        .btn-detail-cta:hover { background-color: #222222; }
+
+        /* --------------------------------------------------
+           FOOTER
+        -------------------------------------------------- */
         footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border-neutral); background-color: var(--bg-main); }
         .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3rem; }
         .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
         .footer-bottom { display: flex; flex-direction: column; gap: 0.8rem; text-align: center; padding-top: 1.5rem; border-top: 1px solid var(--border-neutral); font-size: 0.85rem; color: var(--text-muted); }
 
+        /* ==================================================
+           BREAKPOINT: TABLET & DESKTOP (min-width: 768px)
+        ================================================== */
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
             header { min-height: 80px; display: flex; align-items: center; }
@@ -103,7 +179,14 @@
             .header-cta-btn:hover { background-color: #222222; }
 
             .page-hero { padding-top: 155px; padding-bottom: 4.5rem; }
-            .matrix-row { grid-template-columns: 0.8fr 1.2fr; gap: 4rem; padding: 3.5rem 0; }
+            
+            /* Split Screen Desktop */
+            .services-split {
+                grid-template-columns: 0.8fr 1.2fr; gap: 4.5rem; align-items: start;
+            }
+            .services-tab-list {
+                position: sticky; top: 120px;
+            }
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
             .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
         }
@@ -111,9 +194,11 @@
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
         <div class="header-container">
             <div class="header-logo"><a href="index.html">FormFlowStudio</a></div>
+            
             <button class="mobile-toggle" id="menuToggle" aria-label="Menü öffnen">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -121,10 +206,11 @@
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
             </button>
+            
             <div class="header-nav-wrapper" id="navWrapper">
                 <ul class="nav-links">
-                    <li><a href="arbeiten.html">SHOWCASE</a></li>
-                    <li><a href="leistungen.html" class="active">POTENZIALE</a></li>
+                    <li><a href="leistungen.html" class="active">LEISTUNGEN</a></li>
+                    <li><a href="potenziale.html">POTENZIALE</a></li>
                     <li><a href="studio.html">STUDIO</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                 </ul>
@@ -134,63 +220,109 @@
     </header>
 
     <main class="container">
+        <!-- Hero-Bereich -->
         <section class="page-hero">
-            <span class="hero-kicker">02 // POTENZIALE &amp; ARCHITEKTUR</span>
-            <h1 class="page-headline">Technologische Exzellenz mit klarem ROI.</h1>
-            <p class="page-subline">Warum handcodierte Websites Baukasten-Systemen in Geschwindigkeit, Sicherheit und Conversion überlegen sind.</p>
+            <span class="hero-kicker">01 // LEISTUNGSSPEKTRUM</span>
+            <h1 class="page-headline">Maßgeschneiderte Lösungen für Ihren digitalen Erfolg.</h1>
+            <p class="page-subline">Von der 100% individuellen Entwicklung bis zur vollautomatisierten Kundenführung – wählen Sie einen Schwerpunkt für Details.</p>
         </section>
 
-        <section class="matrix-container">
-            <!-- Modul 01 -->
-            <div class="matrix-row">
-                <div>
-                    <span class="matrix-index">MODUL 01 //</span>
-                    <h2 class="matrix-title">Performance-Architektur &amp; SEO</h2>
-                </div>
-                <div>
-                    <p class="matrix-desc">Schlanker Quellcode ohne überladene Themes oder zeitraubende Drittanbieter-Scripte. Das System lädt in Millisekunden, reduziert Absprünge auf mobilen Endgeräten und sichert Ihnen den entscheidenden Vorsprung im Google-Ranking.</p>
-                    <ul class="matrix-points">
-                        <li>Ladezeiten unter 0.5 Sekunden</li>
-                        <li>Perfekte semantische HTML5-Struktur</li>
-                        <li>Automatisierte Core-Web-Vitals-Optimierung</li>
-                    </ul>
-                </div>
-            </div>
+        <!-- Interaktives Split-Screen-Layout -->
+        <section class="services-split">
+            <!-- Linke Spalte: Tabs -->
+            <ul class="services-tab-list">
+                <li><button class="service-tab-btn active" onclick="switchServiceTab(0)">Webdesign &amp; Erstellung</button></li>
+                <li><button class="service-tab-btn" onclick="switchServiceTab(1)">SEO &amp; Google-Optimierung</button></li>
+                <li><button class="service-tab-btn" onclick="switchServiceTab(2)">Buchungs- &amp; Terminservice</button></li>
+                <li><button class="service-tab-btn" onclick="switchServiceTab(3)">Rundum-Hosting &amp; Betreuung</button></li>
+            </ul>
 
-            <!-- Modul 02 -->
-            <div class="matrix-row">
-                <div>
-                    <span class="matrix-index">MODUL 02 //</span>
-                    <h2 class="matrix-title">Prozess-Automatisierung</h2>
-                </div>
-                <div>
-                    <p class="matrix-desc">Eine Website muss administrative Arbeit abnehmen. Wir integrieren maßgeschneiderte Termin-, Buchungs- und Anfrage-Systeme, die ohne manuelle Zwischenschritte funktionieren und Ausfälle aktiv minimieren.</p>
-                    <ul class="matrix-points">
-                        <li>Automatisierte Termin- &amp; Bestätigungs-Workflows</li>
-                        <li>Direkte Kalender- und Kapazitätsabgleiche</li>
-                        <li>Entlastung Ihres Teams im Tagesgeschäft</li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Rechte Spalte: Detail-Ansichten -->
+            <div>
+                <!-- Tab 1: Webdesign & Erstellung -->
+                <div class="services-detail-pane active" id="service-pane-0">
+                    <h2 class="service-detail-title">Webdesign &amp; Erstellung</h2>
+                    <p class="service-detail-subline">Maßgeschneiderte Webseiten, die den Charakter Ihres Betriebs einfangen und Besucher überzeugen.</p>
+                    
+                    <div class="service-process-block">
+                        <span class="service-section-label">WIE WIR VORGEHEN</span>
+                        <p class="service-process-text">Wir planen und programmieren zukunftssichere, barrierefreie Websites exakt nach Ihren Anforderungen. Keine unübersichtlichen Baukästen oder Sicherheitsrisiken, sondern messerscharfe Typografie, intuitive Nutzerführung und blitzschnelle Performance.</p>
+                    </div>
 
-            <!-- Modul 03 -->
-            <div class="matrix-row" style="border-bottom: 1px solid var(--border-neutral);">
-                <div>
-                    <span class="matrix-index">MODUL 03 //</span>
-                    <h2 class="matrix-title">Maßgeschneidertes Editorial UI</h2>
-                </div>
-                <div>
-                    <p class="matrix-desc">Ein 100% individueller Markenauftritt abseits austauschbarer Standard-Templates. Wir entwickeln eine reduzierte, zeitlose Designsprache, die Vertrauen schafft und Premium-Kunden anzieht.</p>
-                    <ul class="matrix-points">
-                        <li>Kompromisslose Markenidentität</li>
-                        <li>Barrierefreie, conversion-fokussierte Nutzerführung</li>
-                        <li>Zukunftssicher ohne Abhängigkeiten von Baukästen</li>
+                    <ul class="spec-checklist">
+                        <li class="spec-check-item"><span>Regelmäßige Feedback- &amp; Designschleifen</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Responsiver QC-Test für alle Displaygrößen</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>100% DSGVO-konforme, rechtssichere Umsetzung</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Transparente Kostenschätzung auf Festpreis-Basis</span><span class="check-icon">✓</span></li>
                     </ul>
+
+                    <a href="kontakt.html" class="btn-detail-cta">Individuelles Angebot anfragen &rarr;</a>
+                </div>
+
+                <!-- Tab 2: SEO & Google-Optimierung -->
+                <div class="services-detail-pane" id="service-pane-1">
+                    <h2 class="service-detail-title">SEO &amp; Google-Optimierung</h2>
+                    <p class="service-detail-subline">Nachhaltige Sichtbarkeit bei Google für anspruchsvolle Branchen.</p>
+                    
+                    <div class="service-process-block">
+                        <span class="service-section-label">WIE WIR VORGEHEN</span>
+                        <p class="service-process-text">Wir strukturieren Ihren Quellcode semantisch korrekt, optimieren Meta-Tags und garantieren Spitzenladezeiten. Das schafft das perfekte technische Fundament, um bei relevanten Suchbegriffen organisch ganz oben zu stehen.</p>
+                    </div>
+
+                    <ul class="spec-checklist">
+                        <li class="spec-check-item"><span>Semantische On-Page- &amp; Quellcode-Optimierung</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Audit der Core Web Vitals &amp; Mobile Experience</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Lokale Auffindbarkeit &amp; Google-Maps-Integration</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Nachhaltige Strukturierung ohne fragwürdige Tricks</span><span class="check-icon">✓</span></li>
+                    </ul>
+
+                    <a href="kontakt.html" class="btn-detail-cta">Individuelles Angebot anfragen &rarr;</a>
+                </div>
+
+                <!-- Tab 3: Buchungs- & Terminservice -->
+                <div class="services-detail-pane" id="service-pane-2">
+                    <h2 class="service-detail-title">Buchungs- &amp; Terminservice</h2>
+                    <p class="service-detail-subline">Automatisierte Buchungssysteme sparen tägliche Verwaltungszeit und Telefonate.</p>
+                    
+                    <div class="service-process-block">
+                        <span class="service-section-label">WIE WIR VORGEHEN</span>
+                        <p class="service-process-text">Schluss mit Terminstress am Telefon. Wir binden digitale Buchungs- und Reservierungskalender direkt in Ihre Website ein. Ihre Kunden buchen 24/7 selbstständig Dienstleistungen oder Tische, inklusive automatischer Bestätigung.</p>
+                    </div>
+
+                    <ul class="spec-checklist">
+                        <li class="spec-check-item"><span>Nahtlos eingebettete Kalender &amp; Buchungsflows</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Automatisierte Bestätigungen &amp; Erinnerungen</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Synchronisation mit bestehenden Kalendersystemen</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Spürbare Entlastung des Teams im Tagesgeschäft</span><span class="check-icon">✓</span></li>
+                    </ul>
+
+                    <a href="kontakt.html" class="btn-detail-cta">Individuelles Angebot anfragen &rarr;</a>
+                </div>
+
+                <!-- Tab 4: Rundum-Hosting & Betreuung -->
+                <div class="services-detail-pane" id="service-pane-3">
+                    <h2 class="service-detail-title">Rundum-Hosting &amp; Betreuung</h2>
+                    <p class="service-detail-subline">Technischer Betrieb und Updates aus einer Hand – Sie müssen sich um nichts kümmern.</p>
+                    
+                    <div class="service-process-block">
+                        <span class="service-section-label">WIE WIR VORGEHEN</span>
+                        <p class="service-process-text">Keine Sorgen um Server, Backups oder Sicherheitslücken. Wir übernehmen das laufende technische Monitoring und die Bereitstellung. Text- oder Bildänderungen setzen wir auf Zuruf unkompliziert für Sie um.</p>
+                    </div>
+
+                    <ul class="spec-checklist">
+                        <li class="spec-check-item"><span>High-Speed-Infrastruktur &amp; SSL-Verschlüsselung</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Automatische Backups &amp; Sicherheitsüberwachung</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Direkter Ansprechpartner für laufende Textänderungen</span><span class="check-icon">✓</span></li>
+                        <li class="spec-check-item"><span>Wartungsfreie Architektur ohne Update-Abstürze</span><span class="check-icon">✓</span></li>
+                    </ul>
+
+                    <a href="kontakt.html" class="btn-detail-cta">Individuelles Angebot anfragen &rarr;</a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -201,8 +333,8 @@
                 <div class="footer-links">
                     <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Navigation</h6>
                     <ul>
-                        <li><a href="arbeiten.html">SHOWCASE</a></li>
-                        <li><a href="leistungen.html">POTENZIALE</a></li>
+                        <li><a href="leistungen.html">LEISTUNGEN</a></li>
+                        <li><a href="potenziale.html">POTENZIALE</a></li>
                         <li><a href="studio.html">STUDIO</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="kontakt.html">KONTAKT</a></li>
@@ -226,9 +358,24 @@
     </footer>
 
     <script>
+        // Mobile Navigation Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navWrapper = document.getElementById('navWrapper');
         menuToggle.addEventListener('click', () => { navWrapper.classList.toggle('active'); });
+
+        // Tab Switching Logic
+        function switchServiceTab(index) {
+            const tabs = document.querySelectorAll('.service-tab-btn');
+            const panes = document.querySelectorAll('.services-detail-pane');
+
+            tabs.forEach((tab, idx) => {
+                tab.classList.toggle('active', idx === index);
+            });
+
+            panes.forEach((pane, idx) => {
+                pane.classList.toggle('active', idx === index);
+            });
+        }
     </script>
 </body>
 </html>
