@@ -55,7 +55,7 @@
         }
 
         /* --------------------------------------------------
-           1. HEADER (MOBILE BASE & DESKTOP HOTFIX)
+           1. HEADER
         -------------------------------------------------- */
         header {
             position: fixed;
@@ -103,7 +103,6 @@
             width: 24px;
         }
 
-        /* Mobile Drawer */
         .header-nav-wrapper {
             position: fixed;
             top: 75px;
@@ -140,12 +139,68 @@
             font-weight: 500;
         }
 
-        /* Base Buttons */
-        .btn {
+        /* --------------------------------------------------
+           2. HERO SECTION (ZENTRIERT & REFACTORED)
+        -------------------------------------------------- */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 130px;
+            padding-bottom: 5rem;
+        }
+
+        .hero-centered {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #777777;
+            margin-bottom: 24px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .hero-subline {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.6;
+            color: #555555;
+            max-width: 680px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-btn-wrapper {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
+            padding: 14px 28px;
             background-color: #000000;
             color: #FFFFFF;
             font-size: 0.75rem;
@@ -157,22 +212,34 @@
             transition: background-color 0.2s ease;
         }
 
-        .btn:hover {
+        .btn-primary:hover {
             background-color: #222222;
         }
 
-        .btn-outline {
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
             background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-neutral);
+            border: 1px solid #D0D0D0;
+            color: #000000;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .btn-outline:hover {
-            background-color: var(--text-primary);
-            color: var(--bg-main);
-            border-color: var(--text-primary);
+        .btn-secondary:hover {
+            border-color: #000000;
+            background-color: #FAFAFA;
         }
 
+        /* --------------------------------------------------
+           3. RESTLICHE SEKTIONEN & FOOTER
+        -------------------------------------------------- */
         .section-tag {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -188,53 +255,34 @@
             border-top: 1px solid var(--border-neutral);
         }
 
-        /* Hero */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            padding-top: 120px;
-            padding-bottom: 4rem;
-        }
-
-        .hero h1 {
-            font-family: var(--font-serif);
-            font-size: 2.8rem;
-            font-weight: 400;
-            line-height: 1.08;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-        }
-
-        .hero h1 em { font-style: italic; }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-        }
-
-        .mockup-card {
-            width: 100%;
-            background-color: var(--surface-studio);
-            border: 1px solid var(--border-neutral);
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
         /* ROI Cards */
         .roi-card {
             padding: 2rem;
             background-color: var(--surface-studio);
             border: 1px solid var(--border-neutral);
             margin-bottom: 1.5rem;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-neutral);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+            border-color: var(--text-primary);
         }
 
         /* Studio Seal */
@@ -261,9 +309,7 @@
             font-weight: 600;
         }
 
-        /* --------------------------------------------------
-           2. PROZESS-SEKTION (MOBILE BASE)
-        -------------------------------------------------- */
+        /* Prozess Grid */
         .steps-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -354,7 +400,6 @@
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
 
-            /* Header Desktop Flexbox Fix */
             header {
                 min-height: 80px;
                 display: flex;
@@ -372,7 +417,6 @@
 
             .header-logo {
                 font-size: 26px;
-                margin-right: 0;
             }
 
             .mobile-toggle { display: none !important; }
@@ -387,12 +431,12 @@
                 width: auto;
                 display: flex;
                 align-items: center;
-                gap: 32px; /* Spacing zwischen Links-Gruppe und Button */
+                gap: 32px;
             }
 
             .nav-links {
                 flex-direction: row;
-                gap: 28px; /* Spacing zwischen den Text-Links */
+                gap: 28px;
             }
 
             .nav-links a {
@@ -423,23 +467,12 @@
                 background-color: #222222;
             }
 
-            /* Section Desktop Spacings */
             section { padding: 7rem 0; }
 
             .hero {
-                padding-top: 140px;
-                padding-bottom: 4rem;
+                padding-top: 150px;
+                padding-bottom: 6rem;
             }
-
-            .hero-grid {
-                display: grid;
-                grid-template-columns: 1.1fr 0.9fr;
-                gap: 3.5rem;
-                align-items: center;
-            }
-
-            .hero h1 { font-size: 3.8rem; }
-            .mockup-card { margin-top: 0; }
 
             .comparison-wrapper {
                 display: grid;
@@ -453,7 +486,6 @@
                 padding: 2.5rem 2rem;
             }
 
-            /* Prozess Grid Desktop */
             .steps-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 32px;
@@ -480,8 +512,7 @@
         }
 
         @media (min-width: 1024px) {
-            .hero { padding-top: 160px; }
-            .hero h1 { font-size: 4.5rem; }
+            .hero { padding-top: 170px; }
         }
     </style>
 </head>
@@ -514,31 +545,17 @@
         </div>
     </header>
 
-    <!-- 1. Hero Section -->
+    <!-- 1. Hero Section (Zentriert & Neu Aufgebaut) -->
     <section class="hero">
-        <div class="container hero-grid">
-            <div>
-                <span class="section-tag">DIGITALE MARKENARCHITEKTUR</span>
-                <h1>Mehr Umsatz & Ansehen für <em>ambitionierte</em> Unternehmen.</h1>
-                <p class="hero-sub">Wir entwickeln maßgeschneiderte digitale Ökosysteme für zukunftsorientierte Marken, Dienstleister und Erlebnis-Brands mit hohem Qualitätsanspruch.</p>
-                <div class="hero-actions">
-                    <a href="kontakt.html" class="btn">Erstgespräch anfordern</a>
-                    <a href="arbeiten.html" class="btn btn-outline">Projekte entdecken</a>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="mockup-card">
-                    <div class="mockup-header" style="display:flex; gap:6px; margin-bottom:1rem;">
-                        <div style="width:8px; height:8px; border-radius:50%; background:#CCCCCC;"></div>
-                        <div style="width:8px; height:8px; border-radius:50%; background:#CCCCCC;"></div>
-                        <div style="width:8px; height:8px; border-radius:50%; background:#CCCCCC;"></div>
-                    </div>
-                    <div class="mockup-body" style="background:#FFFFFF; padding:2rem; border:1px solid var(--border-neutral);">
-                        <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary);">Brand Identity & Interface</span>
-                        <h2 style="font-family:var(--font-serif); font-size:1.8rem; margin:0.5rem 0 1rem; font-weight:400; color:var(--text-primary);">Tailored Digital Experience</h2>
-                        <p style="font-size:0.85rem; color:var(--text-secondary); font-weight:300;">Nahtlose Buchungsprozesse gekoppelt mit kompromissloser visueller Ästhetik.</p>
-                    </div>
+        <div class="container">
+            <div class="hero-centered">
+                <span class="hero-kicker">STUDIO FÜR DIGITALE ARCHITEKTUR</span>
+                <h1 class="hero-title">Erstklassige Webpräsenzen für einen starken Auftritt und maximale Sichtbarkeit.</h1>
+                <p class="hero-subline">Wir entwickeln 100% individuelle, extrem schnelle und passgenaue Websites für moderne Unternehmen. Keine komplizierten Baukästen, keine Probleme — sondern ein sauberer digitaler Auftritt, der zu Ihnen passt.</p>
+                
+                <div class="hero-btn-wrapper">
+                    <a href="kontakt.html" class="btn-primary">ERSTGESPRÄCH ANFORDERN</a>
+                    <a href="arbeiten.html" class="btn-secondary">PROJEKTE ENTDECKEN</a>
                 </div>
             </div>
         </div>
@@ -582,7 +599,7 @@
                 <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300;">Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
 
                 <div style="margin-top: 2rem;">
-                    <a href="studio.html" class="btn btn-outline">Mehr über das Studio &rarr;</a>
+                    <a href="studio.html" class="btn-outline">Mehr über das Studio &rarr;</a>
                 </div>
 
                 <div class="founder-seal">
@@ -627,7 +644,7 @@
                 <p class="closing-text">
                     „Keine Massenabfertigung, kein Agentur-Wasserkopf. Direkte Zusammenarbeit mit messbarem unternehmerischem Mehrwert.“
                 </p>
-                <a href="kontakt.html" class="btn" style="padding: 14px 28px;">Projekt anfragen &rarr;</a>
+                <a href="kontakt.html" class="btn-primary" style="padding: 14px 28px;">Projekt anfragen &rarr;</a>
             </div>
         </div>
     </section>
