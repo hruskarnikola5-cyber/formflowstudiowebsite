@@ -10,9 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ======================================================================
-           COLOR SYSTEM & BASE STYLES (MONOCHROME BLACK & WHITE)
-           ====================================================================== */
+        /* COLOR SYSTEM & BASE STYLES */
         :root {
             --bg-main: #FFFFFF;
             --surface-studio: #F5F5F7;
@@ -56,7 +54,7 @@
             padding: 0 1.25rem;
         }
 
-        /* Base Header (Mobile First) */
+        /* Mobile Header Base */
         header {
             position: fixed;
             top: 0;
@@ -85,6 +83,7 @@
             display: flex;
             align-items: center;
             line-height: 1;
+            white-space: nowrap;
         }
 
         .mobile-toggle {
@@ -177,7 +176,7 @@
             border-top: 1px solid var(--border-neutral);
         }
 
-        /* 1. Hero Section Base */
+        /* Hero Section */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -218,7 +217,7 @@
             margin-top: 2rem;
         }
 
-        /* 2. ROI Cards Base */
+        /* ROI Section Base */
         .roi-card {
             padding: 2rem;
             background-color: var(--surface-studio);
@@ -226,7 +225,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 3. Studio Founder Seal */
+        /* Studio Seal Base */
         .founder-seal {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -250,54 +249,32 @@
             font-weight: 600;
         }
 
-        /* 4. Form Split Base */
-        .option-selector {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
-        }
-
-        .option-card {
-            padding: 1rem 1.2rem;
-            border: 1px solid var(--border-neutral);
-            background-color: var(--bg-main);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-        }
-
-        .option-card.active {
-            border-color: var(--text-primary);
-            background-color: var(--surface-studio);
-        }
-
-        .option-card input { display: none; }
-
-        .input-field {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--text-primary);
-            padding: 0.8rem 0;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--text-primary);
-            outline: none;
-            border-radius: 0;
-        }
-
-        .form-group {
+        /* Workflow Step Cards */
+        .step-card {
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--border-neutral);
+            background: var(--bg-main);
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.5rem;
+        .step-num {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .step-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
         }
 
         /* Footer Base */
@@ -332,44 +309,35 @@
         }
 
         /* ======================================================================
-           MEDIA-QUERY SCOPING: TABLET / DESKTOP (min-width: 768px)
+           TABLET / DESKTOP BREAKPOINT (min-width: 768px / 1024px)
            ====================================================================== */
         @media (min-width: 768px) {
             .container { padding: 0 2.5rem; }
 
-            /* 1. Header Redesign & Glassmorphism */
+            /* 1. Shopify-Style Header Layout */
             header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                z-index: 1000;
-                background: rgba(255, 255, 255, 0.85);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            }
-
-            nav {
-                height: 85px;
+                min-height: 80px;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
             }
 
-            /* Logo: Ganz linksbündig, 24px Serif */
+            header .container.nav {
+                max-width: 100%;
+                padding: 20px 56px;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
             .logo-brand {
-                font-family: var(--font-serif);
-                font-size: 24px;
-                font-weight: 500;
-                letter-spacing: -0.01em;
-                color: var(--text-primary);
-                line-height: 1;
+                font-size: 26px;
+                margin-right: auto; /* Ganz links verankert */
             }
 
             .mobile-toggle { display: none !important; }
 
-            /* Nav-Menu Container rechtsbündig */
+            /* Right Alignment & Gap */
             .nav-menu {
                 position: static;
                 transform: none;
@@ -377,9 +345,10 @@
                 padding: 0;
                 background: transparent;
                 border: none;
-                gap: 0;
                 width: auto;
+                display: flex;
                 align-items: center;
+                gap: 36px; /* 36px Gap zwischen den Links */
             }
 
             .nav-menu li {
@@ -387,47 +356,45 @@
                 align-items: center;
             }
 
-            /* Links: 12px Uppercase, #666666, Margin-Right: 28px */
             .nav-menu li:not(:last-child) a {
-                font-size: 12px;
+                font-size: 13px;
                 text-transform: uppercase;
                 letter-spacing: 0.08em;
                 font-weight: 500;
-                color: #666666;
-                margin-right: 28px;
+                color: var(--text-secondary);
                 transition: color 0.2s ease;
             }
 
             .nav-menu li:not(:last-child) a:hover {
-                color: #000000;
+                color: var(--text-primary);
             }
 
-            /* CTA Button ("PROJEKT ANFRAGEN") */
+            /* CTA Button mit 40px Abstand */
+            .nav-menu li:last-child {
+                margin-left: 40px;
+            }
+
             .nav-menu li:last-child a.btn-cta {
                 background-color: #000000;
                 color: #FFFFFF;
-                padding: 10px 20px;
-                font-size: 11px;
+                padding: 12px 24px;
+                font-size: 12px;
                 text-transform: uppercase;
                 letter-spacing: 0.08em;
-                font-weight: 700;
-                border-radius: 0px;
+                font-weight: 600;
                 border: none;
                 transition: background-color 0.2s ease;
             }
 
             .nav-menu li:last-child a.btn-cta:hover {
                 background-color: #222222;
-                color: #FFFFFF;
             }
 
             section { padding: 7rem 0; }
 
-            /* Hero Adjustments */
             .hero {
                 padding-top: 140px;
                 padding-bottom: 4rem;
-                min-height: 80vh;
             }
 
             .hero-grid {
@@ -440,7 +407,6 @@
             .hero h1 { font-size: 3.8rem; }
             .mockup-card { margin-top: 0; }
 
-            /* 2. ROI 3-Spalten-Grid */
             .comparison-wrapper {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -453,17 +419,17 @@
                 padding: 2.5rem 2rem;
             }
 
-            /* 4. Split-Screen Kontakt */
-            .option-selector {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+            /* 3 Schritte Workflow horizontal */
+            .steps-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+                margin-top: 3.5rem;
             }
 
-            .contact-split-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 5rem;
-                align-items: start;
+            .step-card {
+                margin-bottom: 0;
+                padding: 2rem 0 0 0;
             }
 
             .footer-grid {
@@ -480,13 +446,12 @@
         @media (min-width: 1024px) {
             .hero { padding-top: 160px; }
             .hero h1 { font-size: 4.5rem; }
-            .contact-split-grid { gap: 6rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- 1. Header Navigation (Shopify-Proportionen) -->
     <header>
         <div class="container nav">
             <a href="index.html" class="logo-brand">FormFlowStudio</a>
@@ -509,7 +474,7 @@
         </div>
     </header>
 
-    <!-- BLOCK 1: HERO SECTION -->
+    <!-- 2. Hero Section -->
     <section class="hero">
         <div class="container hero-grid">
             <div>
@@ -539,7 +504,7 @@
         </div>
     </section>
 
-    <!-- BLOCK 2: WAS DIE KUNDEN DAVON HABEN / ROI -->
+    <!-- 3. ROI Section -->
     <section id="roi">
         <div class="container">
             <span class="section-tag">01 / POTENZIALE & ROI</span>
@@ -568,7 +533,7 @@
         </div>
     </section>
 
-    <!-- BLOCK 3: WAS UNS AUSMACHT / STUDIO -->
+    <!-- 4. Studio Section -->
     <section id="about">
         <div class="container">
             <div style="max-width: 850px;">
@@ -591,66 +556,38 @@
         </div>
     </section>
 
-    <!-- BLOCK 4: ABSCHNITT 05 / ERSTKONTAKT (SPLIT-SCREEN FORM) -->
-    <section id="kontakt-preview" class="contact-section" style="background-color: var(--surface-studio);">
-        <div class="container contact-split-grid">
-            <div>
-                <span class="section-tag">03 / ERSTKONTAKT</span>
-                <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1.5rem; color:var(--text-primary);">Projekt starten.</h2>
-                <p style="color: var(--text-secondary); font-weight: 300; margin-bottom: 2rem;">Lassen Sie uns unverbindlich über die Potenziale Ihres digitalen Auftritts sprechen.</p>
-                
-                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 2rem;">
-                    <div class="founder-avatar" style="width: 50px; height: 50px; font-size: 0.9rem;">FF</div>
-                    <div>
-                        <div style="font-weight: 600; font-size: 0.9rem; color:var(--text-primary);">Direkter Draht zum Lead Architect</div>
-                        <div style="font-size: 0.85rem; color: var(--text-secondary);">hello@formflowstudio.de</div>
-                    </div>
+    <!-- 5. Projektablauf & Homepage Abschluss (Kein Formular, Reiner Call-To-Action) -->
+    <section id="workflow" style="background-color: var(--surface-studio);">
+        <div class="container">
+            <span class="section-tag">03 / PROJEKTABLAUF & WARUM WIR</span>
+            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1rem; color:var(--text-primary);">Vom ersten Konzept zum messbaren Markterfolg.</h2>
+            <p style="color: var(--text-secondary); font-weight: 300; max-width: 650px;">Ein klarer, transparenter Prozess garantiert Ihnen maximale Planungssicherheit und ein System, das exakt auf Ihre Wachstumsziele abgestimmt ist.</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01 //</div>
+                    <div class="step-title">Strategie & Positionierung</div>
+                    <p class="step-desc">Präzise Zielgruppen- und Marktanalyse zur Bestimmung der optimalen Conversion-Pfade und Informationsarchitektur.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">02 //</div>
+                    <div class="step-title">Editorial Design & Code</div>
+                    <p class="step-desc">Maßgeschneiderte Architektur ohne Baukästen. Einzigartige Ästhetik vereint mit handgeschriebener technischer Exzellenz.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">03 //</div>
+                    <div class="step-title">Launch & Conversion</div>
+                    <p class="step-desc">Maximale Google-Performance, Anbindung automatisierter Buchungssysteme und verlässliche Begleitung nach dem Go-Live.</p>
                 </div>
             </div>
 
-            <div class="form-container" style="width:100%;">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Vielen Dank. Wir melden uns innerhalb von 24h.');">
-                    <div class="form-step">
-                        <div class="form-group">
-                            <label>Branchenfeld</label>
-                            <div class="option-selector">
-                                <label class="option-card active">
-                                    <span>Dienstleistung & Beratung</span>
-                                    <input type="radio" name="branch" value="services" checked>
-                                </label>
-                                <label class="option-card">
-                                    <span>Erlebnis & Gastlichkeit</span>
-                                    <input type="radio" name="branch" value="hospitality">
-                                </label>
-                                <label class="option-card">
-                                    <span>Handwerk & Premium-Kultur</span>
-                                    <input type="radio" name="branch" value="craft">
-                                </label>
-                                <label class="option-card">
-                                    <span>Sonstiges / Anfrage</span>
-                                    <input type="radio" name="branch" value="other">
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="userName">Name & Unternehmen</label>
-                            <input type="text" id="userName" class="input-field" placeholder="z. B. Elena Becker, Becker & Co." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="userEmail">E-Mail-Adresse</label>
-                            <input type="email" id="userEmail" class="input-field" placeholder="elena@becker-studio.de" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="userMessage">Details zum Vorhaben</label>
-                            <textarea id="userMessage" class="input-field" rows="3" placeholder="Kurze Beschreibung Ihrer Zielsetzung..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Erstgespräch anfordern</button>
-                    </div>
-                </form>
+            <div style="text-align: center; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border-neutral);">
+                <p style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+                    „Keine Massenabfertigung, kein Agentur-Wasserkopf. Direkte Zusammenarbeit mit messbarem unternehmerischem Mehrwert.“
+                </p>
+                <a href="kontakt.html" class="btn" style="padding: 16px 36px; font-size: 0.85rem;">Projekt anfragen &rarr;</a>
             </div>
         </div>
     </section>
@@ -696,20 +633,8 @@
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.option-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const groupName = this.querySelector('input').name;
-                document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
-                    input.closest('.option-card').classList.remove('active');
-                });
-                this.classList.add('active');
-                this.querySelector('input').checked = true;
-            });
         });
     </script>
 </body>
