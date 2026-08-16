@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FormFlowStudio | Digitale Markenarchitektur & Websysteme</title>
+    <title>FormFlowStudio | Webdesign & Entwicklung für ambitionierte Unternehmen</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* COLOR SYSTEM & BASE STYLES */
         :root {
             --bg-main: #FFFFFF;
-            --surface-studio: #F5F5F7;
+            --surface-studio: #FAFAFA;
             --text-primary: #0A0A0A;
-            --text-secondary: #666666;
+            --text-secondary: #555555;
+            --text-muted: #777777;
             --border-neutral: #E5E5E5;
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Inter', sans-serif;
@@ -55,7 +56,7 @@
         }
 
         /* --------------------------------------------------
-           1. HEADER
+           HEADER
         -------------------------------------------------- */
         header {
             position: fixed;
@@ -140,19 +141,19 @@
         }
 
         /* --------------------------------------------------
-           2. HERO SECTION (ZENTRIERT & REFACTORED)
+           1. HERO SECTION
         -------------------------------------------------- */
         .hero {
-            min-height: 80vh;
+            min-height: 78vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding-top: 130px;
-            padding-bottom: 5rem;
+            padding-bottom: 4.5rem;
         }
 
         .hero-centered {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
             text-align: center;
             display: flex;
@@ -161,10 +162,10 @@
         }
 
         .hero-kicker {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #777777;
+            letter-spacing: 0.14em;
+            color: var(--text-muted);
             margin-bottom: 24px;
             font-weight: 600;
             display: block;
@@ -172,17 +173,18 @@
 
         .hero-title {
             font-family: var(--font-serif);
-            font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-            line-height: 1.15;
+            font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+            line-height: 1.12;
             color: var(--text-primary);
             margin-bottom: 24px;
             font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .hero-subline {
             font-size: clamp(1rem, 2vw, 1.15rem);
-            line-height: 1.6;
-            color: #555555;
+            line-height: 1.65;
+            color: var(--text-secondary);
             max-width: 680px;
             margin-bottom: 40px;
             font-weight: 300;
@@ -196,6 +198,7 @@
             flex-wrap: wrap;
         }
 
+        /* Buttons */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -207,13 +210,14 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 600;
-            border: none;
+            border: 1px solid #000000;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
         .btn-primary:hover {
             background-color: #222222;
+            border-color: #222222;
         }
 
         .btn-secondary {
@@ -227,7 +231,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -235,32 +239,6 @@
         .btn-secondary:hover {
             border-color: #000000;
             background-color: #FAFAFA;
-        }
-
-        /* --------------------------------------------------
-           3. RESTLICHE SEKTIONEN & FOOTER
-        -------------------------------------------------- */
-        .section-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            display: block;
-            font-weight: 500;
-        }
-
-        section {
-            padding: 5rem 0;
-            border-top: 1px solid var(--border-neutral);
-        }
-
-        /* ROI Cards */
-        .roi-card {
-            padding: 2rem;
-            background-color: var(--surface-studio);
-            border: 1px solid var(--border-neutral);
-            margin-bottom: 1.5rem;
         }
 
         .btn-outline {
@@ -285,88 +263,171 @@
             border-color: var(--text-primary);
         }
 
-        /* Studio Seal */
-        .founder-seal {
-            margin-top: 3rem;
-            padding-top: 2rem;
+        /* --------------------------------------------------
+           2. METRIKEN-ZEILE (KEINE GRAUEN KÄSTEN)
+        -------------------------------------------------- */
+        .metrics-section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border-neutral);
+            border-bottom: 1px solid var(--border-neutral);
+        }
+
+        .metrics-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .metric-col {
+            padding: 0 0.5rem;
+        }
+
+        .metric-value {
+            font-family: var(--font-serif);
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .metric-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 320px;
+        }
+
+        /* --------------------------------------------------
+           3. STUDIO & ECHTER TRUST
+        -------------------------------------------------- */
+        .section-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .studio-section {
+            padding: 6rem 0;
+        }
+
+        .founder-trust-card {
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
             border-top: 1px solid var(--border-neutral);
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
 
-        .founder-avatar {
-            width: 60px;
-            height: 60px;
+        .founder-image-wrapper {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background-color: var(--surface-studio);
+            overflow: hidden;
             border: 1px solid var(--border-neutral);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
+            flex-shrink: 0;
+            background-color: var(--surface-studio);
+        }
+
+        .founder-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            display: block;
+        }
+
+        .founder-meta strong {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
             font-weight: 600;
         }
 
-        /* Prozess Grid */
-        .steps-grid {
+        .founder-meta span {
+            color: #666666;
+            font-size: 13px;
+            display: block;
+        }
+
+        /* --------------------------------------------------
+           4. ABLAUF-TIMELINE
+        -------------------------------------------------- */
+        .process-section {
+            padding: 6rem 0 7rem;
+            border-top: 1px solid var(--border-neutral);
+            background-color: #FFFFFF;
+        }
+
+        .timeline-container {
+            margin-top: 4rem;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
-            margin-top: 3rem;
+            gap: 2.5rem;
+            position: relative;
         }
 
-        .step-card {
-            background: #FFFFFF;
-            border: 1px solid #EAEAEA;
-            padding: 24px;
+        .timeline-step {
+            position: relative;
+            padding-top: 1.5rem;
+            border-top: 1px solid #000000;
         }
 
-        .step-num {
-            font-size: 14px;
-            font-weight: 600;
-            color: #888;
-            margin-bottom: 16px;
-        }
-
-        .step-title {
-            font-family: var(--font-serif);
-            font-size: 22px;
-            font-weight: 400;
-            margin-bottom: 16px;
+        .timeline-num {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             color: var(--text-primary);
+            margin-bottom: 12px;
         }
 
-        .step-desc {
+        .timeline-title {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .timeline-desc {
             font-size: 14px;
             line-height: 1.6;
-            color: #555;
+            color: var(--text-secondary);
             font-weight: 300;
         }
 
-        .closing-box {
+        .closing-action {
             text-align: center;
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-neutral);
+            margin-top: 4.5rem;
         }
 
-        .closing-text {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 24px;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.4;
-        }
-
-        /* Footer Base */
+        /* --------------------------------------------------
+           FOOTER
+        -------------------------------------------------- */
         footer {
             padding: 4rem 0 2rem;
             border-top: 1px solid var(--border-neutral);
+            background-color: var(--bg-main);
         }
 
         .footer-grid {
@@ -391,7 +452,7 @@
             padding-top: 1.5rem;
             border-top: 1px solid var(--border-neutral);
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         /* ==================================================
@@ -467,39 +528,59 @@
                 background-color: #222222;
             }
 
-            section { padding: 7rem 0; }
-
+            /* Hero */
             .hero {
                 padding-top: 150px;
                 padding-bottom: 6rem;
             }
 
-            .comparison-wrapper {
-                display: grid;
+            /* Metriken 3-Spalten mit vertikalen Trennlinien */
+            .metrics-section {
+                padding: 6rem 0;
+            }
+
+            .metrics-row {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                margin-top: 3rem;
+                gap: 0;
             }
 
-            .roi-card {
-                margin-bottom: 0;
-                padding: 2.5rem 2rem;
+            .metric-col {
+                padding: 0 2.5rem;
             }
 
-            .steps-grid {
+            .metric-col:first-child {
+                padding-left: 0;
+            }
+
+            .metric-col:not(:last-child) {
+                border-right: 1px solid var(--border-neutral);
+            }
+
+            /* Studio Section Desktop */
+            .studio-section {
+                padding: 7rem 0;
+            }
+
+            .founder-image-wrapper {
+                width: 90px;
+                height: 90px;
+            }
+
+            /* Timeline Desktop */
+            .process-section {
+                padding: 7rem 0 8rem;
+            }
+
+            .timeline-container {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
-                margin-top: 3.5rem;
+                gap: 3rem;
             }
 
-            .step-card {
-                padding: 32px;
+            .closing-action {
+                margin-top: 5rem;
             }
 
-            .closing-box {
-                margin-top: 48px;
-            }
-
+            /* Footer */
             .footer-grid {
                 grid-template-columns: 1.5fr 1fr 1fr;
             }
@@ -513,6 +594,7 @@
 
         @media (min-width: 1024px) {
             .hero { padding-top: 170px; }
+            .hero-title { font-size: 3.8rem; }
         }
     </style>
 </head>
@@ -545,106 +627,104 @@
         </div>
     </header>
 
-    <!-- 1. Hero Section (Zentriert & Neu Aufgebaut) -->
+    <!-- 1. Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-centered">
-                <span class="hero-kicker">STUDIO FÜR DIGITALE ARCHITEKTUR</span>
+                <span class="hero-kicker">WEBDESIGN &amp; ENTWICKLUNG FÜR AMBITIONIERTE UNTERNEHMEN</span>
                 <h1 class="hero-title">Erstklassige Webpräsenzen für einen starken Auftritt und maximale Sichtbarkeit.</h1>
-                <p class="hero-subline">Wir entwickeln 100% individuelle, extrem schnelle und passgenaue Websites für moderne Unternehmen. Keine komplizierten Baukästen, keine Probleme — sondern ein sauberer digitaler Auftritt, der zu Ihnen passt.</p>
+                <p class="hero-subline">Wir entwickeln 100 % individuelle, extrem schnelle Websites ohne überladene Baukästen. Handcodiert, wartungsfrei und maßgeschneidert auf Ihren Markenauftritt.</p>
                 
                 <div class="hero-btn-wrapper">
-                    <a href="kontakt.html" class="btn-primary">ERSTGESPRÄCH ANFORDERN</a>
-                    <a href="arbeiten.html" class="btn-secondary">PROJEKTE ENTDECKEN</a>
+                    <a href="arbeiten.html" class="btn-primary">PROJEKTE ENTDECKEN &rarr;</a>
+                    <a href="kontakt.html" class="btn-secondary">Erstgespräch anfragen</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. ROI Section -->
-    <section id="roi">
+    <!-- 2. Metriken-Zeile (Offenes 3-Spalten-Layout ohne graue Kästen) -->
+    <section class="metrics-section">
         <div class="container">
-            <span class="section-tag">01 / POTENZIALE & ROI</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; max-width: 700px; margin-bottom: 1rem; color:var(--text-primary);">Mögliche Kennzahlen & Zielsetzungen.</h2>
-            <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; font-weight: 300;">Gezielte digitale Architektur adressiert die Schwachstellen klassischer Websites und verwandelt Besucher verlässlich in Kunden.</p>
-
-            <div class="comparison-wrapper">
-                <div class="roi-card">
-                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary); font-weight:600; display:block; margin-bottom:1rem;">Conversion Rate</span>
-                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem; color:var(--text-primary);">Optimierte Buchungsquote</h3>
-                    <p style="color:var(--text-secondary); font-size:0.95rem; font-weight:300;">Nahtlose, barrierefreie Nutzerführung, die Website-Besucher ohne Hürden zu echten Buchungen und Anfragen konvertiert.</p>
+            <div class="metrics-row">
+                <div class="metric-col">
+                    <div class="metric-value">&lt; 0,4s</div>
+                    <span class="metric-label">LADEZEIT-STANDARD</span>
+                    <p class="metric-text">Kompromisslose Performance für minimale Absprungraten und beste Google-Rankings.</p>
                 </div>
 
-                <div class="roi-card">
-                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary); font-weight:600; display:block; margin-bottom:1rem;">Effizienz</span>
-                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem; color:var(--text-primary);">Automatisierter Workflow</h3>
-                    <p style="color:var(--text-secondary); font-size:0.95rem; font-weight:300;">Digitale Termin- und Reservierungssysteme sparen tägliche Verwaltungszeit und reduzieren Ausfälle durch Erinnerungen.</p>
+                <div class="metric-col">
+                    <div class="metric-value">100%</div>
+                    <span class="metric-label">INDIVIDUALITÄT</span>
+                    <p class="metric-text">Keine vorgefertigten Themes. Jede Zeile Code entsteht maßgeschneidert für Ihr Unternehmen.</p>
                 </div>
 
-                <div class="roi-card">
-                    <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-secondary); font-weight:600; display:block; margin-bottom:1rem;">Performance</span>
-                    <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; margin-bottom:0.8rem; color:var(--text-primary);">High-Speed Performance</h3>
-                    <p style="color:var(--text-secondary); font-size:0.95rem; font-weight:300;">Ladezeiten unter 0,5 Sekunden garantieren minimale Absprungraten und beste Platzierungen bei Google.</p>
+                <div class="metric-col">
+                    <div class="metric-value">0</div>
+                    <span class="metric-label">WARTUNGS-AUFWAND</span>
+                    <p class="metric-text">Schlanke Systemarchitektur ohne fehleranfällige Plugin-Updates oder Sicherheitslücken.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Studio Section -->
-    <section id="about">
+    <!-- 3. Studio & Echter Person-Trust -->
+    <section class="studio-section">
         <div class="container">
-            <div style="max-width: 850px;">
-                <span class="section-tag">02 / STUDIO-PHILOSOPHIE</span>
-                <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; line-height: 1.15; margin-bottom: 2rem; color:var(--text-primary);">„Persönliche Betreuung statt anonymer Großagentur.“</h2>
+            <div style="max-width: 860px;">
+                <span class="section-tag">STUDIO-PHILOSOPHIE</span>
+                <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 3.8vw, 3rem); font-weight: 400; line-height: 1.18; margin-bottom: 2rem; color:var(--text-primary);">„Persönliche Betreuung statt anonymer Großagentur.“</h2>
                 <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300;">Hinter FormFlowStudio steht kein unpersönlicher Agentur-Wasserkopf mit ständig wechselnden Junior-Ansprechpartnern, sondern erstklassige digitale Handwerkskunst aus einer Hand.</p>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; font-weight: 300;">Ich verknüpfe tiefes Verständnis für ästhetisches Branding mit hochmoderner Software-Entwicklung. Das garantiert Ihnen direkte Wege, maximale Präzision und ein Endergebnis, das Ihre Marke uneinholbar an der Spitze positioniert.</p>
 
-                <div style="margin-top: 2rem;">
+                <div>
                     <a href="studio.html" class="btn-outline">Mehr über das Studio &rarr;</a>
                 </div>
 
-                <div class="founder-seal">
-                    <div class="founder-avatar">FF</div>
-                    <div>
-                        <h5 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:500; color:var(--text-primary);">Direkter Draht zum Lead Architect</h5>
-                        <p style="font-size:0.85rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.08em;">FormFlowStudio</p>
+                <!-- Echter Portrait-Trust Container -->
+                <div class="founder-trust-card">
+                    <div class="founder-image-wrapper">
+                        <img src="assets/founder.jpg" alt="Gründer &amp; Lead Developer" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23F0F0F0\'/><text x=\'50\' y=\'55\' font-family=\'serif\' font-size=\'14\' fill=\'%23888\' text-anchor=\'middle\'>Portrait</text></svg>';">
+                    </div>
+                    <div class="founder-meta">
+                        <strong>Nikola Hruskar</strong>
+                        <span>Gründer &amp; Lead Developer, FormFlowStudio</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Projektablauf & Warum Wir -->
-    <section id="workflow" style="background-color: var(--surface-studio);">
+    <!-- 4. Ablauf-Timeline (Bereinigt, ohne doppelten Text) -->
+    <section class="process-section">
         <div class="container">
-            <span class="section-tag">03 / PROJEKTABLAUF & WARUM WIR</span>
-            <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1rem; color:var(--text-primary);">Vom ersten Konzept zum messbaren Markterfolg.</h2>
-            <p style="color: var(--text-secondary); font-weight: 300; max-width: 650px;">Ein klarer, transparenter Prozess garantiert Ihnen maximale Planungssicherheit und ein System, das exakt auf Ihre Wachstumsziele abgestimmt ist.</p>
+            <span class="section-tag">PROJEKTABLAUF</span>
+            <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 3.8vw, 3rem); font-weight: 400; margin-bottom: 1rem; color:var(--text-primary);">Vom ersten Konzept zum messbaren Markterfolg.</h2>
+            <p style="color: var(--text-secondary); font-weight: 300; max-width: 650px;">Ein klar strukturierter, transparenter Prozess garantiert Ihnen maximale Planungssicherheit und verlässliche Ergebnisse.</p>
 
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-num">01 //</div>
-                    <div class="step-title">Strategie & Positionierung</div>
-                    <p class="step-desc">Präzise Zielgruppen- und Marktanalyse zur Bestimmung der optimalen Conversion-Pfade und Informationsarchitektur.</p>
+            <div class="timeline-container">
+                <div class="timeline-step">
+                    <div class="timeline-num">01 //</div>
+                    <div class="timeline-title">Strategie &amp; Ausrichtung</div>
+                    <p class="timeline-desc">Präzise Zielgruppen- und Marktanalyse zur Bestimmung der optimalen Nutzerführung und Informationsarchitektur.</p>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-num">02 //</div>
-                    <div class="step-title">Editorial Design & Code</div>
-                    <p class="step-desc">Maßgeschneiderte Architektur ohne Baukästen. Einzigartige Ästhetik vereint mit handgeschriebener technischer Exzellenz.</p>
+                <div class="timeline-step">
+                    <div class="timeline-num">02 //</div>
+                    <div class="timeline-title">Individuelles Interface-Design</div>
+                    <p class="timeline-desc">Maßgeschneiderte visuelle Ästhetik ohne Baukästen. Perfekt abgestimmt auf Ihren Unternehmens- und Markenanspruch.</p>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-num">03 //</div>
-                    <div class="step-title">Launch & Conversion</div>
-                    <p class="step-desc">Maximale Google-Performance, Anbindung automatisierter Buchungssysteme und verlässliche Begleitung nach dem Go-Live.</p>
+                <div class="timeline-step">
+                    <div class="timeline-num">03 //</div>
+                    <div class="timeline-title">Handcodierter Launch &amp; Betreuung</div>
+                    <p class="timeline-desc">Pfeilschnelle, saubere Programmierung, Anbindung relevanter Systeme und verlässliche Begleitung nach dem Go-Live.</p>
                 </div>
             </div>
 
-            <div class="closing-box">
-                <p class="closing-text">
-                    „Keine Massenabfertigung, kein Agentur-Wasserkopf. Direkte Zusammenarbeit mit messbarem unternehmerischem Mehrwert.“
-                </p>
-                <a href="kontakt.html" class="btn-primary" style="padding: 14px 28px;">Projekt anfragen &rarr;</a>
+            <!-- Zentrierter Abschluss-CTA -->
+            <div class="closing-action">
+                <a href="kontakt.html" class="btn-primary" style="padding: 16px 36px;">Projekt unverbindlich anfragen &rarr;</a>
             </div>
         </div>
     </section>
@@ -657,7 +737,7 @@
                     <div class="header-logo" style="margin-bottom: 0.5rem;">
                         <a href="index.html">FormFlowStudio</a>
                     </div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:1rem; font-weight:300;">Studio für digitale Markenarchitektur, High-Performance-Websites und nahtlose Prozess-Automatisierung.</p>
+                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:1rem; font-weight:300; max-width: 320px;">Studio für digitale Markenarchitektur, High-Performance-Websites und maßgeschneiderte Systeme.</p>
                 </div>
 
                 <div class="footer-links">
@@ -672,10 +752,10 @@
                 </div>
 
                 <div class="footer-links">
-                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Socials & Legal</h6>
+                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Socials &amp; Legal</h6>
                     <ul>
-                        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
                         <li><a href="#impressum">Impressum</a></li>
                         <li><a href="#datenschutz">Datenschutz</a></li>
                     </ul>
@@ -684,7 +764,7 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2026 FormFlowStudio. Alle Rechte vorbehalten.</p>
-                <p>Designed & Handcoded with Precision</p>
+                <p>Designed &amp; Handcoded with Precision</p>
             </div>
         </div>
     </footer>
