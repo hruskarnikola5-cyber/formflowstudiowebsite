@@ -424,37 +424,109 @@
         /* --------------------------------------------------
            FOOTER
         -------------------------------------------------- */
-        footer {
-            padding: 4rem 0 2rem;
-            border-top: 1px solid var(--border-neutral);
-            background-color: var(--bg-main);
-        }
+        /* ======================================================================
+   GLOBAL FOOTER REDESIGN (BACKGROUND-TONING & 4-COLUMN GRID)
+   ====================================================================== */
+footer {
+    background-color: #F8F8F8;
+    border-top: 1px solid #EBEBEB;
+    padding: 60px 1.25rem 32px 1.25rem;
+    width: 100%;
+}
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-        .footer-links ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
+.footer-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
 
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-neutral);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+}
 
+.footer-claim {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666666;
+    max-width: 260px;
+    margin-top: 12px;
+    font-weight: 300;
+}
+
+.footer-col-title {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888888;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+.footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-list a,
+.footer-contact-item {
+    font-size: 13px;
+    color: #333333;
+    font-weight: 400;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.footer-list a:hover,
+.footer-contact-item a:hover {
+    color: #000000;
+}
+
+.footer-bottom {
+    border-top: 1px solid #E5E5E5;
+    margin-top: 48px;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+}
+
+/* Tablet & Desktop Layout */
+@media (min-width: 768px) {
+    footer {
+        padding: 80px 48px 40px 48px;
+    }
+
+    .footer-grid-4 {
+        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+        gap: 2rem;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        margin-top: 60px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+}
         /* ==================================================
            BREAKPOINT: TABLET & DESKTOP (min-width: 768px)
         ================================================== */
@@ -730,44 +802,58 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="header-logo" style="margin-bottom: 0.5rem;">
-                        <a href="index.html">FormFlowStudio</a>
-                    </div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:1rem; font-weight:300; max-width: 320px;">Studio für digitale Markenarchitektur, High-Performance-Websites und maßgeschneiderte Systeme.</p>
-                </div>
-
-                <div class="footer-links">
-                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Navigation</h6>
-                    <ul>
-                        <li><a href="arbeiten.html">SHOWCASE</a></li>
-                        <li><a href="leistungen.html">POTENZIALE</a></li>
-                        <li><a href="studio.html">STUDIO</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="kontakt.html">KONTAKT</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links">
-                    <h6 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1.5rem; color:var(--text-primary);">Socials &amp; Legal</h6>
-                    <ul>
-                        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
-                        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-                        <li><a href="#impressum">Impressum</a></li>
-                        <li><a href="#datenschutz">Datenschutz</a></li>
-                    </ul>
-                </div>
+    <!-- GLOBAL FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid-4">
+            <!-- Spalte 1: Brand & Claim -->
+            <div>
+                <a href="index.html" class="footer-logo">FormFlowStudio</a>
+                <p class="footer-claim">Studio für digitale Markenarchitektur, High-Performance-Websites und maßgeschneiderte Systeme.</p>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 FormFlowStudio. Alle Rechte vorbehalten.</p>
-                <p>Designed &amp; Handcoded with Precision</p>
+            <!-- Spalte 2: Navigation -->
+            <div>
+                <div class="footer-col-title">NAVIGATION</div>
+                <ul class="footer-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="leistungen.html">Leistungen</a></li>
+                    <li><a href="studio.html">Studio</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <!-- Spalte 3: Rechtliches -->
+            <div>
+                <div class="footer-col-title">RECHTLICHES</div>
+                <ul class="footer-list">
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                </ul>
+            </div>
+
+            <!-- Spalte 4: Kontakt -->
+            <div>
+                <div class="footer-col-title">KONTAKT</div>
+                <ul class="footer-list">
+                    <li class="footer-contact-item">
+                        <a href="mailto:hello@formflowstudio.de">hello@formflowstudio.de</a>
+                    </li>
+                    <li class="footer-contact-item">
+                        <a href="tel:+491700000000">+49 (0) 170 / 000 00 00</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+
+        <!-- Footer-Bottom -->
+        <div class="footer-bottom">
+            <div>&copy; 2026 FormFlowStudio. Alle Rechte vorbehalten.</div>
+            <div>Designed &amp; Handcoded with Precision</div>
+        </div>
+    </div>
+</footer>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
